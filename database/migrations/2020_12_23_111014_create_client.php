@@ -28,7 +28,7 @@ class CreateClient extends Migration
             $table->string('telegram');
             $table->string('facebook');
             $table->string('phone_landline');
-            $table->string('mobile');
+            $table->string('phone_number');
             $table->string('home_address');
             $table->string('dates_keys');
             $table->string('registry');

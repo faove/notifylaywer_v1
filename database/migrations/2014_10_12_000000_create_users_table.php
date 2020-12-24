@@ -21,6 +21,23 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
+
+            // $table->increments('id');
+            // $table->string('name');
+            // $table->string('email')->unique();
+            // $table->string('password');
+            // $table->datetime('last_login')->nullable();
+            // $table->datetime('expiration_date')->nullable();
+            // $table->string('image')->nullable();
+            // $table->string('api_token', 100)->nullable();
+            // $table->integer('current_branch_office_id')->unsigned()->nullable();
+            // $table->integer('default_branch_office_id')->unsigned()->nullable();
+            // $table->rememberToken();
+            // $table->timestamps();
+            
+            // $table->foreign('current_branch_office_id')->references('id')->on('branch_offices');
+            // $table->foreign('default_branch_office_id')->references('id')->on('branch_offices');
+        
         });
     }
 

@@ -15,9 +15,9 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id'); // 
-            $table->string('type_service')->nullable(); //1= Consultoría / 2 = Asesoría
-            $table->string('mode_service')->nullable(); //Telefónica / Teleconferencia / Presencial / Domiciliaria / Asistencia Legal POR ACTOS
-            $table->string('area_service')->nullable(); // Laboral / Mercantil / etc.
+            $table->integer('type_service_id')->nullable(); //1= Consultoría / 2 = Asesoría
+            $table->integer('mode_service_id')->nullable(); //Telefónica / Teleconferencia / Presencial / Domiciliaria / Asistencia Legal POR ACTOS
+            $table->integer('areas_id')->nullable(); //Area del Servicio Laboral / Mercantil / etc.
             $table->integer('associate_id')->nullable()->unsigned();
             $table->integer('client_id')->nullable()->unsigned();
             $table->integer('rate_variable')->nullable(); //TARIFA ACORDADA POR ACTO ASISTIDO / ASESORADO.
@@ -37,6 +37,13 @@ class CreateServicesTable extends Migration
             $table->foreign('associate_id')->references('id')->on('associate');
             //Servicios se asocia con Clientes N -> 1
             $table->foreign('client_id')->references('id')->on('client');
+            //Tipos de Servicios hace match con table type_services
+            $table->foreign('type_service_id')->references('id')->on('type_service');
+            //Tipos de Servicios hace match con table type_services
+            $table->foreign('mode_service_id')->references('id')->on('mode_service');
+            //Tipos de Servicios hace match con table type_services
+            $table->foreign('areas_id')->references('id')->on('areas');
+
         });
     }
 

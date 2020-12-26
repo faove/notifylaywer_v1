@@ -14,6 +14,15 @@ class DatabaseSeeder extends Seeder
         // $this->call(AreaSpecialties::class);
         $this->call(Areas::class); //table areas
         $this->call(AreaSpecialties::class); //table areas
+        $this->call(AssociateSeeder::class);
+        $this->call(CitieSeeder::class);
+        $this->call(ClientSeeder::class);
+        $this->call(CommunicationSeeder::class);
+        $this->call(InvoiceSeeder::class);
+        $this->call(ServiceSeeder::class);
+        $this->call(TypeCommunicationSeeder::class);
+        $this->call(TypeServiceSeeder::class);
+        $this->call(ReasonSeeder::class);
         $this->call(UserSeeder::class); //table users
     }
 }

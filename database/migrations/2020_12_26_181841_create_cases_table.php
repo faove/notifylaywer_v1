@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Cities extends Migration
+class CreateCasesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class Cities extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('cases', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('name')->nullable();
-            $table->string('lat', 15)->nullable();
-            $table->string('long', 15)->nullable();
-            $table->string('zipcode', 20)->nullable();
+            $table->string('cases')->nullable(); 
+            $table->timestamps();
         });
     }
 
@@ -29,7 +27,6 @@ class Cities extends Migration
      */
     public function down()
     {
-        //
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('cases');
     }
 }

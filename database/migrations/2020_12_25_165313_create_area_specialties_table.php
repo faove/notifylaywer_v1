@@ -15,9 +15,9 @@ class CreateAreaSpecialtiesTable extends Migration
     {
         Schema::create('areas', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('category', 4);
+            $table->string('category', 4)->nullable();
             $table->string('code', 5)->nullable();
-            $table->string('name', 255);
+            $table->string('name', 255)->nullable();
             $table->boolean('is_active')->default(1)->index();
             $table->timestamps();
 

@@ -11,18 +11,27 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(AreaSpecialties::class);
-        $this->call(Areas::class); //table areas
-        $this->call(AreaSpecialties::class); //table areas
+        //Datos áreas
+        $this->call(AreaSeeder::class); 
+        $this->call(AreaSpecialtiesSeeder::class);
+        //Datos Asociados
         $this->call(AssociateSeeder::class);
+        //Ciudades    
         $this->call(CitieSeeder::class);
+        //Clientes
         $this->call(ClientSeeder::class);
         $this->call(CommunicationSeeder::class);
+        //Facturas
         $this->call(InvoiceSeeder::class);
+        //Servicios
         $this->call(ServiceSeeder::class);
+        //tipo de Comunicacion
         $this->call(TypeCommunicationSeeder::class);
+        //Tipo de Servicios
         $this->call(TypeServiceSeeder::class);
+        //Motivo de la comunicación
         $this->call(ReasonSeeder::class);
+        //Datos de Usuarios
         $this->call(UserSeeder::class); //table users
     }
 }

@@ -15,10 +15,10 @@ class CreateServicesTable extends Migration
     {
         Schema::create('services', function (Blueprint $table) {
             $table->increments('id'); // 
-            $table->integer('type_service_id')->nullable(); //1= Consultoría / 2 = Asesoría
-            $table->integer('mode_service_id')->nullable(); //Telefónica / Teleconferencia / Presencial / Domiciliaria / Asistencia Legal POR ACTOS
-            $table->integer('areas_id')->nullable(); //Area del Servicio Laboral / Mercantil / etc.
-            $table->integer('associate_id')->nullable()->unsigned();
+            $table->integer('type_services_id')->unsigned()->nullable(); //1= Consultoría / 2 = Asesoría
+            $table->integer('mode_services_id')->unsigned()->nullable(); //Telefónica / Teleconferencia / Presencial / Domiciliaria / Asistencia Legal POR ACTOS
+            $table->integer('areas_id')->unsigned()->nullable(); //Area del Servicio Laboral / Mercantil / etc.
+            $table->integer('associate_id')->unsigned()->nullable();
             $table->integer('client_id')->nullable()->unsigned();
             $table->integer('rate_variable')->nullable(); //TARIFA ACORDADA POR ACTO ASISTIDO / ASESORADO.
             $table->integer('rate_fixed')->nullable(); //TARIFA FIJA.
@@ -34,13 +34,13 @@ class CreateServicesTable extends Migration
             $table->timestamps();
    
             //Servicios se asocia con Asociados N -> 1
-            $table->foreign('associate_id')->references('id')->on('associate');
+            $table->foreign('associate_id')->references('id')->on('associates');
             //Servicios se asocia con Clientes N -> 1
             $table->foreign('client_id')->references('id')->on('client');
             //Tipos de Servicios hace match con table type_services
-            $table->foreign('type_service_id')->references('id')->on('type_service');
+            $table->foreign('type_services_id')->references('id')->on('type_services');
             //Tipos de Servicios hace match con table type_services
-            $table->foreign('mode_service_id')->references('id')->on('mode_service');
+            $table->foreign('mode_services_id')->references('id')->on('mode_services');
             //Tipos de Servicios hace match con table type_services
             $table->foreign('areas_id')->references('id')->on('areas');
 

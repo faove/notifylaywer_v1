@@ -17,9 +17,12 @@ class CreateJudicialEntitiesTable extends Migration
             $table->increments('id');
             $table->string('name')->nullable(); //Nombre de judicial_entities
             $table->string('address')->nullable(); //judicial_entities
-            $table->string('phone')->nullable(); //judicial_entities phone
+            $table->decimal('lat', 10, 8)->nullable()->comment('Latitud');
+            $table->decimal('long', 11, 8)->nullable()->comment('Longitud');
+            $table->string('telephone_1', 25)->nullable(); //judicial_entities phone
+            $table->string('telephone_2', 25)->nullable();
+            $table->string('email')->nullable();
             $table->text('observations')->nullable(); //Datos de ubicacion referencias del sitio
-            $table->json('georeference')->nullable(); //json [{lat:12.34353,long:-64.8976}]
             $table->timestamps();
         });
     }

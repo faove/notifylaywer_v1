@@ -26,17 +26,18 @@ class CreateCommunicationsTable extends Migration
             $table->string('process_lexic')->nullable(); //PROCESS LEXIC
             $table->date('date_registry')->nullable(); //DATE TIME DEL MOMENTO DE REGISTRARLO / CARGARLO  EN SISTEMA.
             $table->date('date_received')->nullable(); //DATE TIME DE RECEPCION DE LA COMUNICACIÓN.
-            $table->date('date_finished')->nullable();  //FECHA TERMINO DEL PLAZO DE EMPLAZAMIENTO DADO  = FECHA RECEPCION+ 1 + DIAS HABILES COMPUTADOS POR CALENDARIO DE DIAS FERIADOS.
-            $table->integer('day_skillful')->default(0); //ENTERO PARAINDICAR  DIAS HABILES DADOS EN EL PLAZO: 3 / 5 / 10 / 20 / 0 (DEFAULT VALUE).
-            $table->time('hours_performance')->nullable();  //FECHA TERMINO DEL PLAZO DE EMPLAZAMIENTO DADO  = FECHA RECEPCION+ 1 + DIAS HABILES COMPUTADOS POR CALENDARIO DE DIAS FERIADOS.
-            $table->integer('reason_id')->nullable();  // Motivo, Objeto de la comunicacion
+            $table->date('date_end')->nullable();  //FECHA TERMINO DEL PLAZO DE EMPLAZAMIENTO DADO  = FECHA RECEPCION+ 1 + DIAS HABILES COMPUTADOS POR CALENDARIO DE DIAS FERIADOS.
+            $table->integer('day_end')->default(0); //ENTERO PARAINDICAR  DIAS HABILES DADOS EN EL PLAZO: 3 / 5 / 10 / 20 / 0 (DEFAULT VALUE).
+            $table->time('hours_performance')->nullable();  //HORA HABIL HORARIO DADO POR TRIBUNAL.
+            $table->integer('reason_id')->nullable()->unsigned();  // Motivo, Objeto de la comunicacion
             $table->text('notes')->nullable(); //ACCESO  A LA LISTA DE POST / NOTAS INTERNAS ASOCIADAS AL  CASO Y QUE SON DE USO INTERNO AL DESPACHO.
             $table->timestamps();
 
             //Servicios se asocia con Asociados N -> 1
-            $table->foreign('associate_id')->references('id')->on('associate');
-
+            $table->foreign('associate_id')->references('id')->on('associates');
+            $table->foreign('cases_id')->references('id')->on('cases');
             $table->foreign('reason_id')->references('id')->on('reason');
+            $table->foreign('judicial_entities_id')->references('id')->on('judicial_entities');
         });
     }
 

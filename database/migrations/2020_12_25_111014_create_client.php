@@ -31,7 +31,7 @@ class CreateClient extends Migration
             $table->string('social_networks')->nullable();
             $table->string('telegram')->nullable();
             $table->string('facebook')->nullable();
-            $table->string('phone_landline')->nullable(); //TELEFONO FIJO
+            $table->string('telephone')->nullable(); //TELEFONO FIJO
             $table->string('phone_number',45)->nullable();
             $table->integer('city_id')->nullable()->unsigned();
             $table->json('dates_keys')->nullable(); //JSON que muestra las fechas claves 
@@ -39,7 +39,7 @@ class CreateClient extends Migration
             $table->timestamps();
 
             // client with service 1 -> N
-            $table->foreign('dni')->references('client_id')->on('service');
+            //$table->foreign('dni')->references('client_id')->on('services')->onDelete('cascade');
             $table->foreign('city_id')->references('id')->on('cities');
             
         });

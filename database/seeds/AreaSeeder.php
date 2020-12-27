@@ -19,7 +19,7 @@ class AreaSeeder extends Seeder
                 'id' => 1,
                 'category' => 'ATEN', //Codigo de Areas atendidas 
                 'code' => '01',
-                'name' => 'Civil y Comercial',
+                'name' => 'Civil',
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -80,6 +80,16 @@ class AreaSeeder extends Seeder
                 'category' => 'ATEN',
                 'code' => '07',
                 'name' => 'Familia y sucesiones',
+                'is_active' => 1,
+                'created_at' => NULL,
+                'updated_at' => NULL,
+            ),
+            7 => 
+            array (
+                'id' => 8,
+                'category' => 'ATEN', //Codigo de Areas atendidas 
+                'code' => '08',
+                'name' => 'Comercial',
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,

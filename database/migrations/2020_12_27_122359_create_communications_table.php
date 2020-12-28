@@ -38,6 +38,9 @@ class CreateCommunicationsTable extends Migration
             $table->foreign('cases_id')->references('id')->on('cases');
             $table->foreign('reason_id')->references('id')->on('reason');
             $table->foreign('judicial_entities_id')->references('id')->on('judicial_entities');
+            $table->foreign('type_communications_id')->references('id')->on('type_communications');
+        
+            
         });
     }
 

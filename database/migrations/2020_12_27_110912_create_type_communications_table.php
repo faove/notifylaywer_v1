@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAreaSpecialtiesTable extends Migration
+class CreateTypeCommunicationsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,13 @@ class CreateAreaSpecialtiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('areas_specialties', function (Blueprint $table) {
+        Schema::create('type_communications', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('areas_id')->nullable();
-            $table->string('name', 255)->nullable();
+            $table->string('name')->nullable(); //Tipo de Comunicaciòn
             $table->boolean('is_active')->default(1)->index();
             $table->timestamps();
-
-            //$table->unique(array('category', 'code'));
         });
+
     }
 
     /**
@@ -31,6 +29,6 @@ class CreateAreaSpecialtiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('areas_specialties');
+        Schema::dropIfExists('type_communications');
     }
 }

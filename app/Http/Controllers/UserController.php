@@ -5,17 +5,24 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use App\User;
+// Use View;
 
 class UserController extends Controller
 {
     /**
+     * @param Request $request
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
+        //dump($request);
+        $services = User::all();
+        // dump($services);
+        // return view('services');
+        return view('services')->with('services',$services);
     }
 
     /**

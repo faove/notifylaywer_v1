@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Services;
+use Livewire\Component;
 use Illuminate\Http\Request;
 
 class ServicesController extends Controller
 {
+    public $search = '';
     /**
      * Display a listing of the resource.
      *
@@ -81,5 +83,13 @@ class ServicesController extends Controller
     public function destroy(Services $services)
     {
         //
+    }
+    
+
+    public function render()
+    {
+        return view('livewire.search-users', [
+            'users' => User::where('username', $this->search)->get(),
+        ]);
     }
 }

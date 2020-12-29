@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+    <livewire:services />
     <ul>
         @forelse($services as $service)
             <li>{{ $service['email'] }}</li>

@@ -25,6 +25,10 @@ use App\Http\Controllers\UserController;
 //     return view('dashboard');
 // });
 
+Route::get('/', function () { 
+    return view('layout');
+});
 
-
-Route::get('/', [UserController::class, 'index']);
+Route::post('/api/posts', 'UserController@upload');
+Route::get('/api/gets', [UserController::class, 'index']);
+// Route::post('/posts', [UserController::class, 'index']);

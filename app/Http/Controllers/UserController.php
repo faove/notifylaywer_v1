@@ -19,10 +19,17 @@ class UserController extends Controller
     {
         //
         //dump($request);
-        $services = User::all();
-        // dump($services);
+        return User::all();
+        //dump($services);
         // return view('services');
-        return view('services')->with('services',$services);
+        
+        //Probar este
+        //return response()->json($service, 200);
+
+
+
+        // return response()->json(array($services), 207);
+        // return view('services')->with('services',$services);
     }
 
     /**
@@ -121,4 +128,16 @@ class UserController extends Controller
     {
         //
     }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\user  $user
+     * @return \Illuminate\Http\Response
+     */
+    public function upload(Request $request)
+    {
+        return User::all();
+    }
+    
 }

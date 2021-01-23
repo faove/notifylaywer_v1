@@ -20,6 +20,9 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['cors']], function () {
     //Rutas a las que se permitirá acceso
-    Route::post('api/posts', 'UserController@upload');
+    Route::get('/api/service', [ServicesController::class, 'index']);
     Route::get('api/gets', [UserController::class, 'index']);
 });
+
+Route::resource('users','UserController');
+Route::resource('service','ServicesController');

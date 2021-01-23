@@ -31,8 +31,8 @@ class CreateInvoicesTable extends Migration
             $table->softDeletes(); 
 
             $table->unique(array('number', 'client_id', 'net_amount', 'date'), "unique_invoice");
-            $table->foreign('client_id')->references('id')->on('client');
-            $table->foreign('service_id')->references('id')->on('services');
+            //$table->foreign('client_id')->references('id')->on('client');
+            //$table->foreign('service_id')->references('id')->on('services');
             
         });
     }

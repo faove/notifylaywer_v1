@@ -36,13 +36,13 @@ class CreateServicesTable extends Migration
             //Servicios se asocia con Asociados N -> 1
             $table->foreign('associate_id')->references('id')->on('associates');
             //Servicios se asocia con Clientes N -> 1
-            $table->foreign('client_id')->references('id')->on('client');
+            //$table->foreign('client_id')->references('id')->on('client');
             //Tipos de Servicios hace match con table type_services
-            $table->foreign('type_services_id')->references('id')->on('type_services');
+            //$table->foreign('type_services_id')->references('id')->on('type_services');
             //Tipos de Servicios hace match con table type_services
-            $table->foreign('mode_services_id')->references('id')->on('mode_services');
+            //$table->foreign('mode_services_id')->references('id')->on('mode_services');
             //Tipos de Servicios hace match con table type_services
-            $table->foreign('areas_id')->references('id')->on('areas');
+            //$table->foreign('areas_id')->references('id')->on('areas');
 
         });
     }

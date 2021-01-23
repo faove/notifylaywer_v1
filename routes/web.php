@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ServicesController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -29,6 +30,7 @@ Route::get('/', function () {
     return view('layout');
 });
 
-Route::post('/api/posts', 'UserController@upload');
+//Route::post('api/users', [UserController::class, 'store']);
 Route::get('/api/gets', [UserController::class, 'index']);
-// Route::post('/posts', [UserController::class, 'index']);
+
+Route::get('/api/services', [ServicesController::class, 'index']);

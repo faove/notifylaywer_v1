@@ -34,11 +34,11 @@ class CreateCommunicationsTable extends Migration
             $table->timestamps();
 
             //Servicios se asocia con Asociados N -> 1
-            $table->foreign('associate_id')->references('id')->on('associates');
-            $table->foreign('cases_id')->references('id')->on('cases');
-            $table->foreign('reason_id')->references('id')->on('reason');
-            $table->foreign('judicial_entities_id')->references('id')->on('judicial_entities');
-            $table->foreign('type_communications_id')->references('id')->on('type_communications');
+            // $table->foreign('associate_id')->references('id')->on('associates');
+            // $table->foreign('cases_id')->references('id')->on('cases');
+            // $table->foreign('reason_id')->references('id')->on('reason');
+            // $table->foreign('judicial_entities_id')->references('id')->on('judicial_entities');
+            // $table->foreign('type_communications_id')->references('id')->on('type_communications');
         
             
         });

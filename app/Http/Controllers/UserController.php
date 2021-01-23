@@ -43,7 +43,7 @@ class UserController extends Controller
         //
         $values = array(
             'name' => $request->name,
-            'password' => Hash::make($request->password),
+            //'password' => Hash::make($request->password),
             // 'phone_number' => $request->phone_number
             'email' => $request->email
         );
@@ -53,7 +53,7 @@ class UserController extends Controller
             // $user->image = $values['image'];
             $user->name = $values['name'];
             $user->email = $values['email'];
-            $user->password = $values['password'];
+            //$user->password = $values['password'];
             // $user->phone_number = $values['phone_number'];
 
             // $user->default_branch_office_id = $userAccessToken->branch_office_id;
@@ -81,52 +81,46 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $users = new User();
+        $users->name = $request->input('name');
+        $users->email = $request->input('email');
+        $users->password = Hash::make($request->input('email'));
+        $users->save();
+        return json_encode($users);
+        // print_r($request->all());
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function show(User $user)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\User  $user
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(User $user)
-    {
-        //
-    }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\user  $user
+     * @param  \App\user  $users_id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, user $user)
+    public function update(Request $request, $users_id)
     {
-        //
+        $users = User::find($users_id);
+        $users->name = $request->input('name');
+        $users->email = $request->input('email');
+        $users->password = Hash::make($request->input('email'));
+        $users->save();
+        return json_encode($users);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\user  $user
+     * @param  \App\user  $user_id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(user $user)
+    public function destroy($user_id)
     {
-        //
+        echo "destroy";
+        $users = User::find($user_id);
+        $users->delete();
+
+        
     }
 
     /**

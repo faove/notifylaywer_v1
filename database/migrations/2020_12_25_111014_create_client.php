@@ -40,7 +40,7 @@ class CreateClient extends Migration
 
             // client with service 1 -> N
             //$table->foreign('dni')->references('client_id')->on('services')->onDelete('cascade');
-            $table->foreign('city_id')->references('id')->on('cities');
+            // $table->foreign('city_id')->references('id')->on('cities');
             
         });
     }

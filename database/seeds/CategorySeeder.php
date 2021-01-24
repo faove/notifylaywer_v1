@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AreaSeeder extends Seeder
+class CategorySeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,87 +11,87 @@ class AreaSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('areas')->delete();
+        \DB::table('category')->delete();
         
-        \DB::table('areas')->insert(array (
+        \DB::table('category')->insert(array (
             0 => 
             array (
                 'id' => 1,
-                'category_id' => '1', //Codigo de Categoria atendidas 
-                'name' => 'DIVORCIO CONTENCIOSO',
+                'name' => 'Family Law',  //FAMILY LAW
                 'status' => 1,
+                'category' => 'LAWYER',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
             1 => 
             array (
                 'id' => 2,
-                'category_id' => '1', //Codigo de Categoria atendidas 
-                'name' => 'DIVORCIO MUTUO ACUERDO',
+                'name' => 'Litigation', //LITIGATION
                 'status' => 1,
+                'category' => 'LAWYER',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
             2 => 
             array (
                 'id' => 3,
-                'category_id' => '1', //Codigo de Categoria atendidas 
-                'name' => 'CUSTODIA MENORES CONTENCIOSO',
+                'name' => 'Will a Probate',  //WILLS A ND PROBATE
                 'status' => 1,
+                'category' => 'LAWYER',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
             3 => 
             array (
                 'id' => 4,
-                'category_id' => '1', //Codigo de Categoria atendidas 
-                'name' => 'CUSTODIA MENORES MUTUO ACUERDO',
+                'name' => 'Inmigration', //INMIGRATION
                 'status' => 1,
+                'category' => 'LAWYER',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
             4 => 
             array (
                 'id' => 5,
-                'category_id' => '1', //Codigo de Categoria atendidas 
-                'name' => 'DEMANDA EJECUCIÓN IMPAGO PENSIONES',
+                'name' => 'Business Setup', //BUSINESS SETUP
                 'status' => 1,
+                'category' => 'LAWYER',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
             5 => 
             array (
                 'id' => 6,
-                'category_id' => '1', //Codigo de Categoria atendidas 
-                'name' => 'SUSTRACCIÓN INTERNACIONAL DE MENORES',
+                'name' => 'Employment', //EMPLOYMENT
                 'status' => 1,
+                'category' => 'LAWYER',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
             6 => 
             array (
                 'id' => 7,
-                'category_id' => '1', //Codigo de Categoria atendidas 
-                'name' => 'RECLAMACIÓN DEUDA',
+                'name' => 'Real State', //REAL STATE
                 'status' => 1,
+                'category' => 'LAWYER',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
             7 => 
             array (
                 'id' => 8,
-                'category_id' => '1', //Codigo de Categoria atendidas  
-                'name' => 'INCUMPLIMIENTO CONTRACTUAL',
+                'name' => 'Tax', //TAX
                 'status' => 1,
+                'category' => 'LAWYER',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
             8 => 
             array (
                 'id' => 9,
-                'category_id' => '1', //Codigo de Categoria atendidas  
-                'name' => 'FORMATION BUSINESS',
+                'name' => 'Claims (Suspended)', //CLAIMS (SUSPENDED)
                 'status' => 1,
+                'category' => 'LAWYER',
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),

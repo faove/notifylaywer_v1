@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAreasTable extends Migration
+class CreateCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,14 @@ class CreateAreasTable extends Migration
      */
     public function up()
     {
-        Schema::create('areas', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('category_id')->unsigned()->nullable(); // tipo de Category
-            $table->string('name', 255)->nullable();
+        Schema::create('category', function (Blueprint $table) {
+            $table->id();
+            $table->string('name')->nullable();
             $table->integer('status')->nullable();
             $table->string('category')->nullable();
             $table->timestamps();
         });
+
     }
 
     /**
@@ -30,6 +30,6 @@ class CreateAreasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('areas');
+        Schema::dropIfExists('category');
     }
 }

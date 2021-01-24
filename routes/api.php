@@ -26,3 +26,5 @@ Route::group(['middleware' => ['cors']], function () {
 
 Route::resource('users','UserController');
 Route::resource('service','ServicesController');
+Route::resource('delivery','DeliveryTimesController');
+

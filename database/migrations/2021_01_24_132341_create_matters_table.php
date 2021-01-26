@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDeliveryTimesTable extends Migration
+class CreateMattersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateDeliveryTimesTable extends Migration
      */
     public function up()
     {
-        Schema::create('delivery_times', function (Blueprint $table) {
+        Schema::create('matters', function (Blueprint $table) {
             $table->id();
             $table->integer('areas_id')->unsigned()->nullable(); // tipo de Category
             $table->string('lexido')->nullable(); //LEXICODE
@@ -31,6 +31,6 @@ class CreateDeliveryTimesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('delivery_times');
+        Schema::dropIfExists('matters');
     }
 }

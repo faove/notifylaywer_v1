@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class DeliveryTimesSeeder extends Seeder
+class MattersSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,10 +11,10 @@ class DeliveryTimesSeeder extends Seeder
      */
     public function run()
     {
+        
+        \DB::table('matters')->delete();
 
-        \DB::table('delivery_times')->delete();
-
-        \DB::table('delivery_times')->insert(array (
+        \DB::table('matters')->insert(array (
             0 => 
             array (
                 'id' => 1,

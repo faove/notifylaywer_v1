@@ -31,6 +31,7 @@ Route::get('/', function () {
 });
 
 //Route::post('api/users', [UserController::class, 'store']);
-Route::get('/api/gets', [UserController::class, 'index']);
-
+//Route::get('/api/gets', [UserController::class, 'index']);
+Route::get('api/gets/{userid}', [UserController::class, 'index']);
+Route::get('api/gets', [UserController::class, 'index']);
 Route::get('/api/services', [ServicesController::class, 'index']);

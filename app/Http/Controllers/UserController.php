@@ -19,7 +19,23 @@ class UserController extends Controller
     {
         //
         //dump($request);
-        return User::all();
+        $result = null;
+        $userfindid = $request->userid;
+
+        // dump($userfindid);
+
+        if (!empty($userfindid)){
+
+            // dd($userfindid);
+            $result = User::find($userfindid);
+
+        }else{
+
+            $result = User::all();
+            
+        }
+
+        return json_encode($result);
         //dump($services);
         // return view('services');
         
@@ -131,6 +147,18 @@ class UserController extends Controller
     public function upload(Request $request)
     {
         return User::all();
+    }
+
+     /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\user  $user_id
+     * @return \Illuminate\Http\Response
+     */
+    public function get($user_id)
+    {
+        return User::find($user_id);
+        
     }
     
 }

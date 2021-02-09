@@ -22,10 +22,12 @@ Route::group(['middleware' => ['cors']], function () {
     //Rutas a las que se permitirá acceso
     Route::get('/api/services', [ServicesController::class, 'index']);
     Route::get('api/gets/{userid}', [UserController::class, 'index']);
+    Route::get('api/clients/{clientid}', [ClientController::class, 'index']);
 });
 
 Route::resource('users','UserController');
 Route::resource('services','ServicesController');
 Route::resource('matters','MattersController');
 Route::resource('category','CategoryController');
+Route::resource('clients','ClientController');
 

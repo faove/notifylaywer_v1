@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\ClientController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -35,3 +36,4 @@ Route::get('/', function () {
 Route::get('api/gets/{userid}', [UserController::class, 'index']);
 Route::get('api/gets', [UserController::class, 'index']);
 Route::get('/api/services', [ServicesController::class, 'index']);
+Route::get('api/clients/{clientid}', [ClientController::class, 'index']);

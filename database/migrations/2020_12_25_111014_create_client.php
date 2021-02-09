@@ -13,7 +13,7 @@ class CreateClient extends Migration
      */
     public function up()
     {
-        Schema::create('client', function (Blueprint $table) {
+        Schema::create('clients', function (Blueprint $table) {
             $table->increments('id');  // Clientes  Index 
             $table->string('name')->nullable();
             $table->string('last_name')->nullable();
@@ -52,6 +52,6 @@ class CreateClient extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client');
+        Schema::dropIfExists('clients');
     }
 }

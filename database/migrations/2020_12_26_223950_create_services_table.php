@@ -20,6 +20,7 @@ class CreateServicesTable extends Migration
             $table->integer('areas_id')->unsigned()->nullable(); //Area del Servicio Laboral / Mercantil / etc.
             $table->integer('associate_id')->unsigned()->nullable();
             $table->integer('client_id')->nullable()->unsigned();
+            $table->text('name_service')->nullable(); // DESCRIPTION THE SERVICIO.
             $table->integer('rate_variable')->nullable(); //TARIFA ACORDADA POR ACTO ASISTIDO / ASESORADO.
             $table->integer('rate_fixed')->nullable(); //TARIFA FIJA.
             $table->integer('rate_process')->nullable(); //TARIFA / COSTO POR ASISTENCIA / ASESORIA POR ACTOS

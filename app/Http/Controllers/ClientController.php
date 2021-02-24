@@ -16,19 +16,25 @@ class ClientController extends Controller
     public function index(Request $request)
     {
         //
-        //dump($request);
         $result = null;
         $clientfindid = $request->clientid;
 
 
-        if (!empty($clientfindid)){
+        if (isset($clientfindid) && !empty($clientfindid)){
 
-            // dd($userfindid);
             $result = Client::find($clientfindid);
 
         }else{
 
-            $result = Client::all();
+            $offset = $request->offset;
+            $limit  = $request->limit;
+            
+            if ((isset($offset) && isset($limit)) && !empty($limit)){
+                $result = Client::offset($offset)->limit($limit)->get();
+
+            }else {
+                $result = Client::all();
+            }
             
         }
 
@@ -138,7 +144,10 @@ class ClientController extends Controller
     {
         $clients = new Client();
         $clients->name = $request->input('name');
+        $clients->last_name = $request->input('last_name');
+        $clients->dni = $request->input('dni');
         $clients->email = $request->input('email');
+        $clients->address = $request->input('address');
         $clients->save();
         return json_encode($clients);
         // print_r($request->all());
@@ -154,8 +163,14 @@ class ClientController extends Controller
      */
     public function update(Request $request, $clients_id)
     {
+        
+
         $clients = Client::find($clients_id);
+        
         $clients->name = $request->input('name');
+        $clients->last_name = $request->input('last_name');
+        $clients->dni = $request->input('dni');
+        $clients->address = $request->input('address');
         $clients->email = $request->input('email');
         $clients->save();
         return json_encode($clients);

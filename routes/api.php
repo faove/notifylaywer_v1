@@ -23,6 +23,7 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get('/api/services', [ServicesController::class, 'index']);
     Route::get('api/gets/{userid}', [UserController::class, 'index']);
     Route::get('api/clients/{clientid}', [ClientController::class, 'index']);
+    Route::get('api/associates/{associateid}',[AssociatesController::class, 'index']);
 });
 
 Route::resource('users','UserController');
@@ -30,4 +31,5 @@ Route::resource('services','ServicesController');
 Route::resource('matters','MattersController');
 Route::resource('category','CategoryController');
 Route::resource('clients','ClientController');
+Route::resource('associates','AssociatesController');
 

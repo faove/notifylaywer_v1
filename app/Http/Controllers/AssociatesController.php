@@ -15,6 +15,7 @@ class AssociatesController extends Controller
     public function index()
     {
         //
+        // dump('index');
     }
 
     /**
@@ -36,6 +37,14 @@ class AssociatesController extends Controller
     public function store(Request $request)
     {
         //
+        $associates = new Associates();
+        $associates->name = $request->input('name');
+        $associates->last_name = $request->input('last_name');
+        $associates->dni = $request->input('dni');
+        $associates->email = $request->input('email');
+        $associates->address = $request->input('address');
+        $associates->save();
+        return json_encode($associates);
     }
 
     /**

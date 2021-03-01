@@ -15,7 +15,29 @@ class ServicesController extends Controller
      */
     public function index()
     {
-        return Services::all();
+        $result = null;
+        $associatefindid = $request->associateid;
+
+
+        if (isset($associatefindid) && !empty($associatefindid)){
+
+            $result = Services::find($associatefindid);
+
+        }else{
+
+            $offset = $request->offset;
+            $limit  = $request->limit;
+            
+            if ((isset($offset) && isset($limit)) && !empty($limit)){
+                $result = Services::offset($offset)->limit($limit)->get();
+
+            }else {
+                $result = Services::all();
+            }
+            
+        }
+
+        return json_encode($result);
     }
 
 

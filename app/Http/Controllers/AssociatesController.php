@@ -12,10 +12,31 @@ class AssociatesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        // dump('index');
+        $result = null;
+        $associatefindid = $request->associateid;
+
+
+        if (isset($associatefindid) && !empty($associatefindid)){
+
+            $result = Associates::find($associatefindid);
+
+        }else{
+
+            $offset = $request->offset;
+            $limit  = $request->limit;
+            
+            if ((isset($offset) && isset($limit)) && !empty($limit)){
+                $result = Associates::offset($offset)->limit($limit)->get();
+
+            }else {
+                $result = Associates::all();
+            }
+            
+        }
+
+        return json_encode($result);
     }
 
     /**
@@ -73,22 +94,34 @@ class AssociatesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Associates  $associates
+     * @param  \App\Associates  $associateid
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Associates $associates)
+    public function update(Request $request, $associateid)
     {
-        //
+        
+
+        $associate = Associates::find($associateid);
+        
+        $associate->name = $request->input('name');
+        $associate->last_name = $request->input('last_name');
+        $associate->dni = $request->input('dni');
+        $associate->address = $request->input('address');
+        $associate->email = $request->input('email');
+        $associate->save();
+        return json_encode($associate);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Associates  $associates
+     * @param  \App\Associates  $associateid
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Associates $associates)
+    public function destroy($associateid)
     {
         //
+        $associate = Associates::find($associateid);
+        $associate->delete();
     }
 }

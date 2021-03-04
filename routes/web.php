@@ -35,6 +35,7 @@ Route::get('/', function () {
 //Route::get('/api/gets', [UserController::class, 'index']);
 Route::get('api/gets/{userid}', [UserController::class, 'index']);
 Route::get('api/gets', [UserController::class, 'index']);
-Route::get('/api/services/{serviceid}', [ServicesController::class, 'index']);
+Route::get('services/{serviceid}', [ServicesController::class, 'getservice']);
+Route::get('services', [ServicesController::class, 'index']);
 Route::get('api/clients/{clientid}', [ClientController::class, 'index']);
 Route::get('api/associates/{associateid}',[AssociatesController::class, 'index']);

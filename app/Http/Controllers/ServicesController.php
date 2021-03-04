@@ -13,15 +13,19 @@ class ServicesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        // dump('index');
+
         $result = null;
-        $associatefindid = $request->associateid;
+        $servicefindid = $request->serviceid;
+        // dump('services_id');
+        // dump($request->serviceid);
+        // dump($servicefindid);
 
+        if (isset($servicefindid) && !empty($servicefindid)){
 
-        if (isset($associatefindid) && !empty($associatefindid)){
-
-            $result = Services::find($associatefindid);
+            $result = Services::where('client_id', $servicefindid);
 
         }else{
 
@@ -40,7 +44,39 @@ class ServicesController extends Controller
         return json_encode($result);
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function getservice(Request $request)
+    {
+        $result = null;
+        $servicefindid = $request->serviceid;
+        // dump('services_id');
+        
 
+        if (isset($servicefindid) && !empty($servicefindid)){
+        //     dump($request->serviceid);
+        // dump($servicefindid);
+            $result = Services::where('client_id','=', $servicefindid)->get();;
+
+        }else{
+
+            $offset = $request->offset;
+            $limit  = $request->limit;
+            
+            if ((isset($offset) && isset($limit)) && !empty($limit)){
+                $result = Services::offset($offset)->limit($limit)->get();
+
+            }else {
+                $result = Services::all();
+            }
+            
+        }
+
+        return json_encode($result);
+    }
     /**
      * Store a newly created resource in storage.
      *

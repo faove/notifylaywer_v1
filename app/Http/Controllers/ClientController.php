@@ -15,7 +15,7 @@ class ClientController extends Controller
      */
     public function index(Request $request)
     {
-        //
+        
         $result = null;
         $clientfindid = $request->clientid;
 

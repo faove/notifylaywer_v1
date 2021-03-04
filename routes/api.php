@@ -20,12 +20,21 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['cors']], function () {
     //Rutas a las que se permitirá acceso
-    Route::get('/api/services', [ServicesController::class, 'index']);
+    // Route::get('/api/services', [ServicesController::class, 'index']);
     Route::get('api/gets/{userid}', [UserController::class, 'index']);
     Route::get('api/clients/{clientid}', [ClientController::class, 'index']);
-    Route::get('/api/services/{serviceid}', [ServicesController::class, 'index']);
+    Route::get('services/{serviceid}', [ServicesController::class, 'index']);
+    Route::get('services/{serviceid}', [ServicesController::class, 'getservice']);
     Route::get('api/associates/{associateid}',[AssociatesController::class, 'index']);
 });
+
+
+// Route::group(['prefix' => 'services'], function () {
+//     Route::get('/', [ServicesController::class, 'index']);
+//     Route::get('/{serviceid}', [ServicesController::class, 'index']);
+//     Route::get('getservice/{serviceid}', 'ServicesController@getService');
+// });
+
 
 Route::resource('users','UserController');
 Route::resource('services','ServicesController');

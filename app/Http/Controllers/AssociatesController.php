@@ -16,8 +16,7 @@ class AssociatesController extends Controller
     {
         $result = null;
         $associatefindid = $request->associateid;
-
-
+        
         if (isset($associatefindid) && !empty($associatefindid)){
 
             $result = Associates::find($associatefindid);

@@ -25,7 +25,7 @@ class ServicesController extends Controller
 
         if (isset($servicefindid) && !empty($servicefindid)){
 
-            $result = Services::where('client_id', $servicefindid);
+            $result = Services::where('client_id', $servicefindid)->get();
 
         }else{
 
@@ -59,7 +59,7 @@ class ServicesController extends Controller
         if (isset($servicefindid) && !empty($servicefindid)){
         //     dump($request->serviceid);
         // dump($servicefindid);
-            $result = Services::where('client_id','=', $servicefindid)->get();;
+            $result = Services::where('client_id','=', $servicefindid)->get();
 
         }else{
 

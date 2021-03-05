@@ -11,10 +11,32 @@ class CategoryController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
         //
-        echo 'index';
+        // echo 'index';
+        $result = null;
+        $associatefindid = $request->categoryid;
+        
+        if (isset($categoryid) && !empty($categoryid)){
+
+            $result = Category::find($categoryid);
+
+        }else{
+
+            $offset = $request->offset;
+            $limit  = $request->limit;
+            
+            if ((isset($offset) && isset($limit)) && !empty($limit)){
+                $result = Category::offset($offset)->limit($limit)->get();
+
+            }else {
+                $result = Category::all();
+            }
+            
+        }
+
+        return json_encode($result);
     }
 
 

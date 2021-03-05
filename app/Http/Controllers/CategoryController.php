@@ -9,18 +9,19 @@ class CategoryController extends Controller
 /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
         //
-        // echo 'index';
+        echo 'index';
         $result = null;
-        $associatefindid = $request->categoryid;
+        $categoryfindid = $request->categoryid;
         
-        if (isset($categoryid) && !empty($categoryid)){
+        if (isset($categoryfindid) && !empty($categoryfindid)){
 
-            $result = Category::find($categoryid);
+            $result = Category::find($categoryfindid);
 
         }else{
 

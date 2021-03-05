@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
         //Facturas
         $this->call(InvoiceSeeder::class);
         //Plazos de Entregas
-        $this->call(MattersSeeder::class);
+        $this->call(ProductsSeeder::class);
         //Servicios
         $this->call(ServiceSeeder::class);
         //tipo de Comunicacion

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CategoriesController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,5 +40,5 @@ Route::get('api/gets', [UserController::class, 'index']);
 Route::get('services/{serviceid}', [ServicesController::class, 'getservice']);
 Route::get('services', [ServicesController::class, 'index']);
 Route::get('api/clients/{clientid}', [ClientController::class, 'index']);
-Route::get('api/category/{categoryid}',[CategoryController::class, 'index']);
+Route::get('api/categories/{categoryid}',[CategoriesController::class, 'index']);
 Route::get('api/associates/{associateid}',[AssociatesController::class, 'index']);

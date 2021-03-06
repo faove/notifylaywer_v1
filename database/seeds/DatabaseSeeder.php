@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AreaSeeder::class); 
         $this->call(AreaSpecialtiesSeeder::class);
         //Category
-        $this->call(CategorySeeder::class);
+        $this->call(CategoriesSeeder::class);
         //Datos Asociados
         $this->call(AssociateSeeder::class);
         //Ciudades    

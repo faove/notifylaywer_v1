@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class CategorySeeder extends Seeder
+class CategoriesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,15 +11,15 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('category')->delete();
+        \DB::table('categories')->delete();
         
-        \DB::table('category')->insert(array (
+        \DB::table('categories')->insert(array (
             0 => 
             array (
                 'id' => 1,
                 'name' => 'Family Law',  //FAMILY LAW
-                'status' => 1,
                 'category' => 'LAWYER',
+                'status' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
@@ -27,8 +27,8 @@ class CategorySeeder extends Seeder
             array (
                 'id' => 2,
                 'name' => 'Litigation', //LITIGATION
-                'status' => 1,
                 'category' => 'LAWYER',
+                'status' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
@@ -36,8 +36,8 @@ class CategorySeeder extends Seeder
             array (
                 'id' => 3,
                 'name' => 'Will a Probate',  //WILLS A ND PROBATE
-                'status' => 1,
                 'category' => 'LAWYER',
+                'status' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
@@ -45,8 +45,8 @@ class CategorySeeder extends Seeder
             array (
                 'id' => 4,
                 'name' => 'Inmigration', //INMIGRATION
-                'status' => 1,
                 'category' => 'LAWYER',
+                'status' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
@@ -54,8 +54,8 @@ class CategorySeeder extends Seeder
             array (
                 'id' => 5,
                 'name' => 'Business Setup', //BUSINESS SETUP
-                'status' => 1,
                 'category' => 'LAWYER',
+                'status' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
@@ -63,8 +63,8 @@ class CategorySeeder extends Seeder
             array (
                 'id' => 6,
                 'name' => 'Employment', //EMPLOYMENT
-                'status' => 1,
                 'category' => 'LAWYER',
+                'status' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
@@ -72,8 +72,8 @@ class CategorySeeder extends Seeder
             array (
                 'id' => 7,
                 'name' => 'Real State', //REAL STATE
-                'status' => 1,
                 'category' => 'LAWYER',
+                'status' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
@@ -81,8 +81,8 @@ class CategorySeeder extends Seeder
             array (
                 'id' => 8,
                 'name' => 'Tax', //TAX
-                'status' => 1,
                 'category' => 'LAWYER',
+                'status' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),
@@ -90,8 +90,8 @@ class CategorySeeder extends Seeder
             array (
                 'id' => 9,
                 'name' => 'Claims (Suspended)', //CLAIMS (SUSPENDED)
-                'status' => 1,
                 'category' => 'LAWYER',
+                'status' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
             ),

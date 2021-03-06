@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Category;
+use App\Categories;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class CategoriesController extends Controller
 {
 /**
      * Display a listing of the resource.
@@ -15,13 +15,13 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         //
-        echo 'index';
+        //echo 'index';
         $result = null;
         $categoryfindid = $request->categoryid;
         
         if (isset($categoryfindid) && !empty($categoryfindid)){
 
-            $result = Category::find($categoryfindid);
+            $result = Categories::find($categoryfindid);
 
         }else{
 
@@ -29,10 +29,10 @@ class CategoryController extends Controller
             $limit  = $request->limit;
             
             if ((isset($offset) && isset($limit)) && !empty($limit)){
-                $result = Category::offset($offset)->limit($limit)->get();
+                $result = Categories::offset($offset)->limit($limit)->get();
 
             }else {
-                $result = Category::all();
+                $result = Categories::all();
             }
             
         }
@@ -57,10 +57,10 @@ class CategoryController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\Categories  $category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Categories $category)
     {
         //
         echo 'update';
@@ -69,10 +69,10 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\Categories  $category
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(Categories $category)
     {
         //
         echo 'destroy';

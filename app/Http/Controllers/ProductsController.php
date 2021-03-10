@@ -15,6 +15,7 @@ class ProductsController extends Controller
     public function index()
     {
         //
+        echo 'index';
     }
 
     /**
@@ -36,6 +37,7 @@ class ProductsController extends Controller
     public function store(Request $request)
     {
         //
+        echo 'store';
     }
 
     /**
@@ -70,6 +72,8 @@ class ProductsController extends Controller
     public function update(Request $request, Products $products)
     {
         //
+        echo 'update';
+
     }
 
     /**
@@ -81,5 +85,7 @@ class ProductsController extends Controller
     public function destroy(Products $products)
     {
         //
+        echo 'destroy';
+
     }
 }

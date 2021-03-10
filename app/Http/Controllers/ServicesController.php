@@ -85,12 +85,19 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
+        // dump('store');
+        //     type_services_id, mode_services_id, areas_id, associate_id,
+        // client_id, product_id,name_service, gross_amount, rate_variable, date_service
         $service = new Services();
+        $service->category_id = $request->input('category_id');
         $service->areas_id = $request->input('areas_id');
         $service->associate_id = $request->input('associate_id');
         $service->client_id = $request->input('client_id');
-        $service->associate_id = $request->input('associate_id');
+        $service->associate_id = $request->input('product_id');
         $service->date_service = $request->input('date_service');
+        $service->name_service = $request->input('name_service');
+        $service->gross_amount = $request->input('gross_amount');
+        $service->rate_fixed = $request->input('rate_fixed');
         $service->save();
         return json_encode($service);
     }
@@ -106,11 +113,15 @@ class ServicesController extends Controller
     public function update(Request $request,$services_id)
     {
         $service = Services::find($services_id);
+        $service->category_id = $request->input('category_id');
         $service->areas_id = $request->input('areas_id');
         $service->associate_id = $request->input('associate_id');
         $service->client_id = $request->input('client_id');
-        $service->associate_id = $request->input('associate_id');
+        $service->associate_id = $request->input('product_id');
         $service->date_service = $request->input('date_service');
+        $service->name_service = $request->input('name_service');
+        $service->gross_amount = $request->input('gross_amount');
+        $service->rate_fixed = $request->input('rate_fixed');
         $service->save();
         return json_encode($service);
     }

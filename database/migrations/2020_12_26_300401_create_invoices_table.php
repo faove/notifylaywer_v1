@@ -18,8 +18,8 @@ class CreateInvoicesTable extends Migration
             $table->string('number'); //Numero de Factura 
             $table->integer('client_id')->unsigned()->nullable(); // id del Client
             $table->integer('service_id')->unsigned()->nullable(); // id del Servicio
-            $table->date('date')->nullable(); //Fecha de Facturacion
-            $table->date('date_reception')->nullable(); //Fecha de recepcion de la factura
+            $table->dateTime('date')->nullable(); //Fecha de Facturacion
+            $table->dateTime('date_reception')->nullable(); //Fecha de recepcion de la factura
             $table->decimal('gross_amount', 16, 2)->nullable(); //Monto Bruto
             $table->decimal('discount', 16, 2)->nullable(); //Descuento
             $table->decimal('taxs', 16, 2)->nullable(); //IVA

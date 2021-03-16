@@ -18,9 +18,9 @@ class CreateProductsTable extends Migration
             $table->integer('services_id')->unsigned()->nullable(); // tipo de Category
             $table->string('lexido')->nullable(); //LEXICODE
             $table->text('name_products')->nullable(); // Descripcion del Entregables
-            $table->date('date_start')->nullable(); //FECHAS DEL SERVICIO
-            $table->date('date_end')->nullable(); //FECHAS DEL SERVICIO
-            $table->date('date_pay')->nullable();  // FECHA PAGO
+            $table->dateTime('date_start')->nullable(); //FECHAS DEL SERVICIO
+            $table->dateTime('date_end')->nullable(); //FECHAS DEL SERVICIO
+            $table->dateTime('date_pay')->nullable();  // FECHA PAGO
             $table->integer('quota')->nullable(); // Cuota en porcentaje
             $table->decimal('amount', 16, 2)->nullable();
             $table->string('invoice_number')->nullable(); // Numero de Factura

@@ -29,9 +29,9 @@ class CreateServicesTable extends Migration
             $table->string('chat_service')->nullable(); // CHAT POR DONDE SE PRESTO SERVICIO.
             $table->string('chat_service_name')->nullable(); // NOMBRE CHAT POR DONDE SE PRESTO SERVICIO.
             $table->string('fee_service')->nullable(); //CUOTA SERVICIO
-            $table->date('date_service')->nullable(); //FECHAS DEL SERVICIO
-            $table->date('date_aplication')->nullable();  // FECHA DE SOLICITUD
-            $table->date('date_performance')->nullable(); // FECHA DE PRESTACION
+            $table->dateTime('date_service')->nullable(); //FECHAS DEL SERVICIO
+            $table->dateTime('date_aplication')->nullable();  // FECHA DE SOLICITUD
+            $table->dateTime('date_performance')->nullable(); // FECHA DE PRESTACION
             $table->timestamps();
    
             //Servicios se asocia con Asociados N -> 1

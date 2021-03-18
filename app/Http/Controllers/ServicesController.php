@@ -91,8 +91,6 @@ class ServicesController extends Controller
     {
         $result = null;
         $servicefindid = $request->serviceid;
-        //dd('services_id');
-        dump($servicefindid);
         
 
         if (isset($servicefindid) && !empty($servicefindid)){

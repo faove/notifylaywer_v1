@@ -96,13 +96,19 @@ class ServicesController extends Controller
         if (isset($servicefindid) && !empty($servicefindid)){
             //dump($request->serviceid);
             //dump($servicefindid);
-            $result = Services::select('associates.name','services.date_service',
-            'services.rate_fixed','clients.name','clients.last_name','clients.email')
+            
+            $result = Services::select('services.id','services.category_id','services.associate_id',
+            'associates.name AS name_associates','categories.name AS name_categories','services.client_id',
+            'services.rate_fixed','services.date_service')
             ->join('associates', 'services.associate_id', '=', 'associates.id')
+            ->join('categories', 'services.category_id', '=', 'categories.id')
             ->join('clients', 'services.client_id', '=', 'clients.id')
             ->where('services.client_id', $servicefindid)
             ->get();
-            // ->dump();
+            //->dump();
+            //falta
+            //'associates.name' ,'clients.email'
+            // dump($result);
 
         }else{
 
@@ -147,8 +153,8 @@ class ServicesController extends Controller
 
         //$service->date_service = date('Y-m-d H:i:s',$fechaf); //strtotime($date)
         $service->date_service = $fechaf;
-        $service->name_service = $request->input('name_service');
-        $service->gross_amount = $request->input('gross_amount');
+        // $service->name_service = $request->input('name_service');
+        // $service->gross_amount = $request->input('gross_amount');
         $service->rate_fixed = $request->input('rate_fixed');
         $service->save();
         return json_encode($service);

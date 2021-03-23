@@ -6,6 +6,7 @@ use App\Http\Controllers\ServicesController;
 use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\AreasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,5 +43,6 @@ Route::get('services/associate/{serviceid}', [ServicesController::class, 'getSer
 Route::get('api/services/{serviceid}', [ServicesController::class, 'index']);
 Route::get('api/clients/{clientid}', [ClientController::class, 'index']);
 Route::get('api/categories/{categoryid}',[CategoriesController::class, 'index']);
+Route::get('api/areas/{categoryid}',[AreasController::class, 'index']);
 Route::get('api/associates/{associateid}',[AssociatesController::class, 'index']);
 Route::get('api/products/{productid}',[ProductsController::class, 'index']);

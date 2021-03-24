@@ -7,6 +7,7 @@ use App\Http\Controllers\ClientController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AreasController;
+use App\Http\Controllers\TypeStatusController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,3 +47,5 @@ Route::get('api/categories/{categoryid}',[CategoriesController::class, 'index'])
 Route::get('api/areas/{categoryid}',[AreasController::class, 'index']);
 Route::get('api/associates/{associateid}',[AssociatesController::class, 'index']);
 Route::get('api/products/{productid}',[ProductsController::class, 'index']);
+Route::get('api/typestatus',[TypeStatusController::class, 'index']);
+

@@ -11,9 +11,10 @@ class TypeStatusSeeder extends Seeder
      */
     public function run()
     {
-        \DB::table('type_status')->delete();
+        \DB::table('type_statuses')->delete();
+        // \DB::table('type_status')->delete();
 
-        \DB::table('type_status')->insert(array (
+        \DB::table('type_statuses')->insert(array (
             0 => 
             array (
                 'id' => 1,

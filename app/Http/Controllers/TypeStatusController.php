@@ -15,7 +15,6 @@ class TypeStatusController extends Controller
     public function index()
     {
         //
-        dd('indes');
         $result = null;
         
 

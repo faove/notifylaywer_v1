@@ -13,7 +13,7 @@ class CreateTypeStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('type_status', function (Blueprint $table) {
+        Schema::create('type_statuses', function (Blueprint $table) {
             $table->id();
             $table->string('name')->nullable();
             $table->boolean('is_active')->default(1)->index();
@@ -28,6 +28,6 @@ class CreateTypeStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('type_status');
+        Schema::dropIfExists('type_statuses');
     }
 }

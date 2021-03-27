@@ -22,7 +22,7 @@ class CreateAssociatesTable extends Migration
             $table->string('tution')->nullable(); //COLEGIARUTA
             $table->string('nationality')->nullable();//NACIONALIDAD
             $table->integer('age')->nullable(); //EDAD
-            $table->string('gender', 1)->nullable(); //GENERO
+            $table->integer('gender', 1)->nullable(); //GENERO
             $table->string('address')->nullable(); //DIRECION DOMICILIO
             $table->string('country')->nullable(); //PAIS
             $table->date('date_birth')->nullable(); //FECHA DE NACIMIEMNTO

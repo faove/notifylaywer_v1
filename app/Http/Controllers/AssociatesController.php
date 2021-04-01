@@ -63,6 +63,7 @@ class AssociatesController extends Controller
         $associates->dni = $request->input('dni');
         $associates->email = $request->input('email');
         $associates->address = $request->input('address');
+        $associates->gender = $request->input('gender');
         $associates->save();
         return json_encode($associates);
     }
@@ -101,12 +102,12 @@ class AssociatesController extends Controller
         
 
         $associate = Associates::find($associateid);
-        
         $associate->name = $request->input('name');
         $associate->last_name = $request->input('last_name');
         $associate->dni = $request->input('dni');
         $associate->address = $request->input('address');
         $associate->email = $request->input('email');
+        $associate->gender = $request->input('gender');
         $associate->save();
         return json_encode($associate);
     }

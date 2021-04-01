@@ -107,4 +107,30 @@ class AreasController extends Controller
         $area = Areas::find($areaid);
         $area->delete();
     }
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \App\Areas $areaid
+     * @return \Illuminate\Http\Response
+     */
+    public function getCategArea(Request $request)
+    {
+        $result = null;
+       
+        // dump($request->areaid);
+        // dump('getCategArea');
+        $areafindid = $request->areaid;
+        
+        if (isset($areafindid) && !empty($areafindid)){
+
+            $result = Areas::select('areas.id','areas.category_id','areas.name',
+            'categories.name AS name_categories','areas.status')
+            ->join('categories', 'areas.category_id', '=', 'categories.id')
+            ->where('areas.category_id','=',$areafindid)
+            ->orderBy('areas.category_id', 'ASC')
+            ->get();
+        // ->dump();
+        }
+        return json_encode($result);
+    }
 }

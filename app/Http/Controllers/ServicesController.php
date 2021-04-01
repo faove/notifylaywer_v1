@@ -97,11 +97,13 @@ class ServicesController extends Controller
             //dump($request->serviceid);
             //dump($servicefindid);
             
-            $result = Services::select('services.id','services.category_id','services.associate_id',
-            'associates.name AS name_associates','categories.name AS name_categories','services.client_id',
-            'services.rate_fixed','services.date_service')
+            $result = Services::select('services.id','services.category_id',
+            'services.areas_id','services.associate_id',  //,'areas.name AS name_areas',
+            'associates.name AS name_associates','categories.name AS name_categories',
+            'services.client_id','services.rate_fixed','services.date_service')
             ->join('associates', 'services.associate_id', '=', 'associates.id')
             ->join('categories', 'services.category_id', '=', 'categories.id')
+            //->join('areas', 'areas.category_id', '=', 'categories.id')
             ->join('clients', 'services.client_id', '=', 'clients.id')
             ->where('services.client_id', $servicefindid)
             ->get();

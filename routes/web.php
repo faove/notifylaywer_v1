@@ -45,6 +45,7 @@ Route::get('api/services/{serviceid}', [ServicesController::class, 'index']);
 Route::get('api/clients/{clientid}', [ClientController::class, 'index']);
 Route::get('api/categories/{categoryid}',[CategoriesController::class, 'index']);
 Route::get('api/areas/{categoryid}',[AreasController::class, 'index']);
+Route::get('api/areas/categories/{areaid}',[AreasController::class, 'getCategArea']);
 Route::get('api/associates/{associateid}',[AssociatesController::class, 'index']);
 Route::get('api/products/{productid}',[ProductsController::class, 'index']);
 Route::get('api/typestatus',[TypeStatusController::class, 'index']);

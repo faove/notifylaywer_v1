@@ -27,6 +27,7 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get('services/associate/{serviceid}', [ServicesController::class, 'getServiceAssoc']);
     Route::get('api/associates/{associateid}',[AssociatesController::class, 'index']);
     Route::get('api/areas/{areaid}',[AreasController::class, 'index']);
+    Route::get('api/areas/categories/{areaid}',[AreasController::class, 'getCategArea']);
     Route::get('api/categories/{categoryid}',[CategoriesController::class, 'index']);
     Route::get('api/products/{productid}',[ProductsController::class, 'index']);
     Route::get('api/typestatus',[TypeStatusController::class, 'index']);

@@ -100,7 +100,7 @@ class ServicesController extends Controller
             $result = Services::select('services.id','services.category_id',
             'services.areas_id','services.associate_id','areas.name AS name_areas',
             'associates.name AS name_associates','categories.name AS name_categories',
-            'services.client_id','services.rate_fixed','services.date_service')
+            'services.client_id','services.gross_amount','services.date_service')
             ->join('associates', 'services.associate_id', '=', 'associates.id')
             ->join('categories', 'services.category_id', '=', 'categories.id')
             ->join('areas', 'services.areas_id', '=', 'areas.id')
@@ -156,8 +156,8 @@ class ServicesController extends Controller
         //$service->date_service = date('Y-m-d H:i:s',$fechaf); //strtotime($date)
         $service->date_service = $fechaf;
         // $service->name_service = $request->input('name_service');
-        // $service->gross_amount = $request->input('gross_amount');
-        $service->rate_fixed = $request->input('rate_fixed');
+        $service->gross_amount = $request->input('gross_amount');
+        // $service->rate_fixed = $request->input('rate_fixed');
         $service->save();
         return json_encode($service);
     }

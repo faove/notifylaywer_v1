@@ -17,7 +17,7 @@ class CreateAreasTable extends Migration
             $table->increments('id');
             $table->integer('category_id')->unsigned()->nullable(); // tipo de Category
             $table->string('name', 255)->nullable();
-            $table->TINYINT('status')->nullable();
+            $table->tinyInteger('status')->nullable();
             $table->string('category')->nullable();
             $table->timestamps();
         });

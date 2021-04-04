@@ -18,11 +18,11 @@ class CreateAssociatesTable extends Migration
             $table->string('name')->nullable();
             $table->string('last_name')->nullable();
             $table->integer('dni')->nullable()->unsigned(); //DNI
-            $table->integer('passport')->nullable(); //PASAPORTE
+            $table->integer('passport')->nullable()->unsigned(); //PASAPORTE
             $table->string('tution')->nullable(); //COLEGIARUTA
             $table->string('nationality')->nullable();//NACIONALIDAD
-            $table->integer('age')->nullable(); //EDAD
-            $table->integer('gender', 1)->nullable(); //GENERO
+            $table->integer('age')->nullable()->unsigned(); //EDAD
+            $table->integer('gender')->length(1)->nullable()->unsigned(); //GENERO
             $table->string('address')->nullable(); //DIRECION DOMICILIO
             $table->string('country')->nullable(); //PAIS
             $table->date('date_birth')->nullable(); //FECHA DE NACIMIEMNTO
@@ -33,8 +33,8 @@ class CreateAssociatesTable extends Migration
             $table->string('facebook')->nullable();
             $table->string('phone_landline')->nullable(); //TELEFONO FIJO
             $table->string('phone_number',45)->nullable(); //CELULAR
-            $table->integer('areas_serve_id')->nullable(); //AREAS ATENDIDAS     CIVIL / MERCANTIL / PENAL / ETC.
-            $table->integer('area_specialties_id')->nullable(); //ESPECIALIDADES POR AREAS   DIVORCIOS / FAMILIARES / ETC.
+            $table->integer('areas_serve_id')->nullable()->unsigned(); //AREAS ATENDIDAS     CIVIL / MERCANTIL / PENAL / ETC.
+            $table->integer('area_specialties_id')->nullable()->unsigned(); //ESPECIALIDADES POR AREAS   DIVORCIOS / FAMILIARES / ETC.
             $table->integer('city_id')->nullable()->unsigned();
             $table->timestamps();
         });

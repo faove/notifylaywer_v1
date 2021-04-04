@@ -16,8 +16,18 @@ class TypeProductsController extends Controller
     {
         //
         return TypeProducts::all();
+
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -37,33 +47,55 @@ class TypeProductsController extends Controller
     }
 
     /**
+     * Display the specified resource.
+     *
+     * @param  \App\TypeProducts  $typeProducts
+     * @return \Illuminate\Http\Response
+     */
+    public function show(TypeProducts $typeProducts)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\TypeProducts  $typeProducts
+     * @return \Illuminate\Http\Response
+     */
+    public function edit(TypeProducts $typeProducts)
+    {
+        //
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\TypeProducts  $TypeProducts_id
+     * @param  \App\TypeProducts  $typeProducts
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $TypeProducts_id)
+    public function update(Request $request, TypeProducts $typeProducts)
     {
         //
-        $TypeProducts = TypeProducts::find($TypeProducts_id);
-        $TypeProducts->areas_id = $request->input('areas_id');
-        $TypeProducts->name = $request->input('name');
-        $TypeProducts->deadlines = $request->input('deadlines');
-        $TypeProducts->save();
-        return json_encode($TypeProducts);
+        // $TypeProducts = TypeProducts::find($TypeProducts_id);
+        // $TypeProducts->areas_id = $request->input('areas_id');
+        // $TypeProducts->name = $request->input('name');
+        // $TypeProducts->deadlines = $request->input('deadlines');
+        // $TypeProducts->save();
+        // return json_encode($TypeProducts);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\TypeProducts  $TypeProducts_id
+     * @param  \App\TypeProducts  $typeProducts
      * @return \Illuminate\Http\Response
      */
-    public function destroy($TypeProducts_id)
+    public function destroy(TypeProducts $typeProducts)
     {
-        //
-        $users = TypeProducts::find($TypeProducts_id);
-        $users->delete();
+        // //
+        // $users = TypeProducts::find($TypeProducts_id);
+        // $users->delete();
     }
 }

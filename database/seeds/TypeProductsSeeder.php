@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class MattersSeeder extends Seeder
+class TypeProductsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,9 +12,9 @@ class MattersSeeder extends Seeder
     public function run()
     {
         
-        \DB::table('matters')->delete();
+        \DB::table('type_products')->delete();
 
-        \DB::table('matters')->insert(array (
+        \DB::table('type_products')->insert(array (
             0 => 
             array (
                 'id' => 1,
@@ -217,7 +217,7 @@ class MattersSeeder extends Seeder
             array (
                 'id' => 19,
                 'areas_id' => 2,
-                'lexido' => '1-2-19',
+                'lexido' => '1-2-18',
                 'name' => 'Presentación demanda', //Presentación demanda
                 'deadlines' => 5,
                 'status' => 1,

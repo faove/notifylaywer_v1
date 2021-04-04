@@ -216,7 +216,7 @@ class ProductsSeeder extends Seeder
         //     array (
         //         'id' => 19,
         //         'services_id' => 2,
-        //         'lexido' => '1-2-19',
+        //         'lexido' => '1-2-18',
         //         'name_products' => 'Presentación demanda', //Presentación demanda
         //         'deadlines' => 5,
         //         'status' => 1,

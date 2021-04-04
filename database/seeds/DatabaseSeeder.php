@@ -33,6 +33,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeCommunicationSeeder::class);
         //Tipo de Servicios
         $this->call(TypeServiceSeeder::class);
+        //Tipo de Products
+        $this->call(TypeProductsSeeder::class);
         //Motivo de la comunicación
         $this->call(ReasonSeeder::class);
         //Datos de Usuarios

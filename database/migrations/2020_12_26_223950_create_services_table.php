@@ -18,13 +18,12 @@ class CreateServicesTable extends Migration
             $table->integer('category_id')->unsigned()->nullable(); //1= Consultoría / 2 = Asesoría
             $table->integer('areas_id')->unsigned()->nullable(); //Area del Servicio Laboral / Mercantil / etc.
             $table->integer('client_id')->nullable()->unsigned();
-            $table->integer('product_id')->nullable()->unsigned();
             $table->integer('associate_id')->unsigned()->nullable();
             $table->text('name_service')->nullable(); // DESCRIPTION THE SERVICIO.
             $table->decimal('gross_amount', 16, 2)->nullable();
             $table->decimal('rate_variable', 16, 2)->nullable(); //TARIFA ACORDADA POR ACTO ASISTIDO / ASESORADO.
             $table->decimal('rate_fixed', 16, 2)->nullable(); //TARIFA FIJA.
-            $table->decimal('rate_process', 16, 2)->nullable(); //TARIFA / COSTO POR ASISTENCIA / ASESORIA POR ACTOS
+            // $table->decimal('rate_process', 16, 2)->nullable(); //TARIFA / COSTO POR ASISTENCIA / ASESORIA POR ACTOS
             $table->string('phone_service')->nullable(); // NRO. TELEFONO POR DONDE SE PRESTO SERVICIO.
             $table->string('chat_service')->nullable(); // CHAT POR DONDE SE PRESTO SERVICIO.
             $table->string('chat_service_name')->nullable(); // NOMBRE CHAT POR DONDE SE PRESTO SERVICIO.

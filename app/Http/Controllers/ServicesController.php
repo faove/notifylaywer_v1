@@ -98,12 +98,12 @@ class ServicesController extends Controller
             //dump($servicefindid);
             
             $result = Services::select('services.id','services.category_id',
-            'services.areas_id','services.associate_id',  //,'areas.name AS name_areas',
+            'services.areas_id','services.associate_id','areas.name AS name_areas',
             'associates.name AS name_associates','categories.name AS name_categories',
             'services.client_id','services.rate_fixed','services.date_service')
             ->join('associates', 'services.associate_id', '=', 'associates.id')
             ->join('categories', 'services.category_id', '=', 'categories.id')
-            //->join('areas', 'areas.category_id', '=', 'categories.id')
+            ->join('areas', 'services.areas_id', '=', 'areas.id')
             ->join('clients', 'services.client_id', '=', 'clients.id')
             ->where('services.client_id', $servicefindid)
             ->get();
@@ -144,7 +144,7 @@ class ServicesController extends Controller
         $service->areas_id = $request->input('areas_id');
         $service->associate_id = $request->input('associate_id');
         $service->client_id = $request->input('client_id');
-        $service->associate_id = $request->input('product_id');
+        // $service->associate_id = $request->input('product_id');
 
         $fecha = $request->input('date_service');
         // $fechaf = DateTime::createFromFormat('Y-m-d H:i:s', $fecha);
@@ -167,12 +167,12 @@ class ServicesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Services  $services_id
+     * @param  \App\Services  $serviceid
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,$services_id)
+    public function update(Request $request,$serviceid)
     {
-        $service = Services::find($services_id);
+        $service = Services::find($serviceid);
         $service->category_id = $request->input('category_id');
         $service->areas_id = $request->input('areas_id');
         $service->associate_id = $request->input('associate_id');
@@ -189,12 +189,12 @@ class ServicesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Services  $services_id
+     * @param  \App\Services  $serviceid
      * @return \Illuminate\Http\Response
      */
-    public function destroy($services_id)
+    public function destroy($serviceid)
     {
-        $service = Services::find($services_id);
+        $service = Services::find($serviceid);
         $service->delete();
     }
 

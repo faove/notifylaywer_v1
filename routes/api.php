@@ -31,6 +31,7 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get('api/categories/{categoryid}',[CategoriesController::class, 'index']);
     Route::get('api/products/{productid}',[ProductsController::class, 'index']);
     Route::get('api/typestatus',[TypeStatusController::class, 'index']);
+    Route::get('api/typeproducts',[TypeProductsController::class, 'index']);
 
     // Route::get('api/category',[CategoriesController::class, 'index']);
 });

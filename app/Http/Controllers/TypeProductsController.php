@@ -77,13 +77,13 @@ class TypeProductsController extends Controller
      */
     public function update(Request $request, TypeProducts $typeProducts)
     {
-        //
-        // $TypeProducts = TypeProducts::find($TypeProducts_id);
-        // $TypeProducts->areas_id = $request->input('areas_id');
-        // $TypeProducts->name = $request->input('name');
-        // $TypeProducts->deadlines = $request->input('deadlines');
-        // $TypeProducts->save();
-        // return json_encode($TypeProducts);
+        
+        $TypeProducts = TypeProducts::find($TypeProducts_id);
+        $TypeProducts->areas_id = $request->input('areas_id');
+        $TypeProducts->name = $request->input('name');
+        $TypeProducts->deadlines = $request->input('deadlines');
+        $TypeProducts->save();
+        return json_encode($TypeProducts);
     }
 
     /**

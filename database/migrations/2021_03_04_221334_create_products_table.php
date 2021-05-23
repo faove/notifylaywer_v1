@@ -16,9 +16,9 @@ class CreateProductsTable extends Migration
         Schema::create('products', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('services_id')->unsigned()->nullable(); // tipo de Category
-            $table->integer('product_id')->nullable()->unsigned();
+            $table->integer('type_product_id')->nullable()->unsigned();
             $table->string('lexido')->nullable(); //LEXICODE
-            $table->text('name_products')->nullable(); // Descripcion del Entregables
+            $table->text('description_products')->nullable(); // Descripcion del Entregables
             $table->dateTime('date_start')->nullable(); //FECHAS DEL SERVICIO
             $table->dateTime('date_end')->nullable(); //FECHAS DEL SERVICIO
             $table->dateTime('date_pay')->nullable();  // FECHA PAGO

@@ -38,6 +38,30 @@ class ProductsController extends Controller
     {
         //
         echo 'store';
+        $product = new Products();
+        $product->services_id = $request->input('services_id');
+        $product->type_product_id = $request->input('type_product_id');
+        $product->description_products = $request->input('description_product');
+        $product->lexido = $request->input('lexido');
+        // $product->associate_id = $request->input('product_id');
+
+        $fechas = $request->input('date_start');
+        $fechae = $request->input('date_end');
+        // $fechaf = DateTime::createFromFormat('Y-m-d H:i:s', $fecha);
+        $fechast = date('Y-m-d H:i:s',strtotime($fechas));
+        $fechaen = date('Y-m-d H:i:s',strtotime($fechae));
+        // $fechaf = date('Y-m-d H:i:s',$fecha);
+        // dump('store');
+        // dd($fechaf);
+
+        //$product->date_service = date('Y-m-d H:i:s',$fechaf); //strtotime($date)
+        $product->date_start = $fechast;
+        $product->date_end = $fechaen;
+        // $product->name_service = $request->input('name_service');
+        $product->status = $request->input('status');
+        // $product->rate_fixed = $request->input('rate_fixed');
+        $product->save();
+        return json_encode($product);
     }
 
     /**

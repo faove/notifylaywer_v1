@@ -7,7 +7,7 @@
  * @author   Taylor Otwell <taylor@laravel.com>
  */
 
-define('LARAVEL_START', microtime(true));
+//define('LARAVEL_START', microtime(true));
 //header('Access-Control-Allow-Origin: *');
 //header('Access-Control-Allow-Methods: POST, GET, DELETE, PUT, PATCH, OPTIONS');
 //header('Access-Control-Allow-Headers: token, Content-Type');

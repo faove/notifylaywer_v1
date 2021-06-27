@@ -2,6 +2,14 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\ServicesController;
+use App\Http\Controllers\ClientController;
+use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\AreasController;
+use App\Http\Controllers\TypeStatusController;
+use App\Http\Controllers\TypeProductsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +39,7 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get('api/categories/{categoryid}',[CategoriesController::class, 'index']);
     Route::get('api/products/{productid}',[ProductsController::class, 'index']);
     Route::get('api/typestatus',[TypeStatusController::class, 'index']);
-    Route::get('api/typeproducts',[TypeProductsController::class, 'index']);
+    Route::get('api/typeproducts/areas/{areasid}',[TypeProductsController::class, 'getTypeProducts']);
 
     // Route::get('api/category',[CategoriesController::class, 'index']);
 });

@@ -78,12 +78,12 @@ class TypeProductsController extends Controller
     public function update(Request $request, TypeProducts $typeProducts)
     {
         
-        $TypeProducts = TypeProducts::find($TypeProducts_id);
-        $TypeProducts->areas_id = $request->input('areas_id');
-        $TypeProducts->name = $request->input('name');
-        $TypeProducts->deadlines = $request->input('deadlines');
-        $TypeProducts->save();
-        return json_encode($TypeProducts);
+        // $TypeProducts = TypeProducts::find($typeProducts_id);
+        // $TypeProducts->areas_id = $request->input('areas_id');
+        // $TypeProducts->name = $request->input('name');
+        // $TypeProducts->deadlines = $request->input('deadlines');
+        // $TypeProducts->save();
+        // return json_encode($TypeProducts);
     }
 
     /**
@@ -97,5 +97,35 @@ class TypeProductsController extends Controller
         // //
         // $users = TypeProducts::find($TypeProducts_id);
         // $users->delete();
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @param  \App\TypeProducts $areaid
+     * @return \Illuminate\Http\Response
+     */
+    public function getTypeProducts(Request $request)
+    {
+        $result = null;
+        // dump('getCategArea');
+        // dump($request->areasid);
+        
+        $areafindid = $request->areasid;
+        
+        if (isset($areafindid) && !empty($areafindid)){
+
+            $result = TypeProducts::where('areas_id','=',$areafindid)
+                ->get();
+
+            // $result = TypeProducts::select('areas.id','areas.category_id','areas.name',
+            // 'categories.name AS name_categories','areas.status')
+            // ->join('categories', 'areas.category_id', '=', 'categories.id')
+            // ->where('areas.category_id','=',$areafindid)
+            // ->orderBy('areas.category_id', 'ASC')
+            // ->get();
+        //->dump();
+        }
+        return json_encode($result);
     }
 }

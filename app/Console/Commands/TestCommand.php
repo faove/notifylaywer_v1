@@ -4,6 +4,8 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Areas;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Date;
 
 class TestCommand extends Command
 {
@@ -40,16 +42,41 @@ class TestCommand extends Command
     {
         // $areas = Areas::find(1);
 
-        // dump($areas);
+        // dump($areas);c
+        $format = 'Y-m-d';
+        $selectedDateStart="01/12/2021";
+        // $created = Date($selectedDateStart);
+        $carbon = new Carbon($selectedDateStart);
+        $date = $carbon;
+        $v = $selectedDateStart;
+        dump($v);
+        //$date=date_create($selectedDateStart);
+        $date=date_create($v);
+        echo date_format($date,"Y-m-d H:i:s");
+        //dump(date_format($selectedDateStart,"Y/m/d H:i:s"));
+        dd($v);
+        //$selectedDateStart= Carbon::createFromFormat('d-m-Y H:i:s',  $created);
+        //dump($created);
+        dd($carbon);
 
-        $result = Areas::select('areas.id','areas.category_id','areas.name',
-            'categories.name AS name_categories','areas.status')
-            ->join('categories', 'areas.category_id', '=', 'categories.id')
-            ->where('areas.category_id','=',1)
-            ->orderBy('areas.category_id', 'ASC')
-            ->dd();
+        // $selectedDateStart = Carbon::now();
+        // $now = Carbon::parse(date('Y'));
+        // $cDate = Carbon::parse('2021/06/21');
+        // dd($cDate->diffInDays());
+        // dd($now);
+        // dd($selectedDateStart[0]);
+        // $y= Carbon::createFromFormat($format, $selectedDateStart);
+        // $y=date("Y",$selectedDateStart);
+        //dump($y);
 
-            dump($result);
+        // $result = Areas::select('areas.id','areas.category_id','areas.name',
+        //     'categories.name AS name_categories','areas.status')
+        //     ->join('categories', 'areas.category_id', '=', 'categories.id')
+        //     ->where('areas.category_id','=',1)
+        //     ->orderBy('areas.category_id', 'ASC')
+        //     ->dd();
+
+        //     dump($result);
 
         return 0;
     }

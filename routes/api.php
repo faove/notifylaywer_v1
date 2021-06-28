@@ -10,6 +10,10 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\AreasController;
 use App\Http\Controllers\TypeStatusController;
 use App\Http\Controllers\TypeProductsController;
+use App\Http\Controllers\AssociatesController;
+
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -44,6 +48,8 @@ Route::group(['middleware' => ['cors']], function () {
     // Route::get('api/category',[CategoriesController::class, 'index']);
 });
 
+
+// Route::post('api/products/{productid}', [ProductsController::class, 'index']);
 
 // Route::group(['prefix' => 'services'], function () {
 //     Route::get('/', [ServicesController::class, 'index']);

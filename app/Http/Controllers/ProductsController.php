@@ -128,6 +128,7 @@ class ProductsController extends Controller
 
                     // //$product->date_service = date('Y-m-d H:i:s',$fechaf); //strtotime($date)
                     $product->date_start = $date_start;
+                    strtoupper($date_start->isoFormat('dd'));
                     dump('date_start',$date_start);
                     // $product->date_end = date('d/m/Y', strtotime($date.'+1 day'));new DateTime("+1 day $date")
                     //$date = new DateTime($date);

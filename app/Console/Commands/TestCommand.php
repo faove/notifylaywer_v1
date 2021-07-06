@@ -43,15 +43,19 @@ class TestCommand extends Command
     {
 
 
-        
+        $ddate = "2021-06-27";
+        $duedt = explode("-", $ddate);
+        $date  = mktime(0, 0, 0, $duedt[1], $duedt[2], $duedt[0]);
+        $week  = (int)date('N', $date);
+        echo "Weeknummer: " . $week;
         // $areas = Areas::find(1);
+        dd('ss');
 
         // dump($areas);c
         $format = 'Y-m-d';
         $selectedDateStart="01/12/2021";
         $date = new DateTime($selectedDateStart);
         echo $date->format('Y-m-d H:i:s');
-        dd('ss');
         // $created = Date($selectedDateStart);
         $carbon = new Carbon($selectedDateStart);
         $date = $carbon;

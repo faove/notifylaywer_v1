@@ -47,7 +47,9 @@ class ProductsController extends Controller
             //dd($areafindid);
             // $v = $request->selectedDateStart;
             // dd($v);
-            $date_start = date_create_from_format('d/m/Y', $request->selectedDateStart);
+
+            $date_start = Carbon::now();
+            //$date_start = date_create_from_format('d/m/Y', $request->selectedDateStart);
 
             $date_add = date_create_from_format('d/m/Y', $request->selectedDateStart);
             //$date->getTimestamp();

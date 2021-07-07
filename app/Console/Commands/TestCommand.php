@@ -42,6 +42,31 @@ class TestCommand extends Command
     public function handle()
     {
 
+        // $holiday = array([
+        //     ''
+        // ]);
+        $this->deadlines = 15;
+
+        $date = Carbon::now();
+        //$datef = Carbon::createFromDate(1976,24,01)->age;
+        //
+        $i=0;
+        while ($i<15) {
+            dump($i);
+            $date = $date->addDay(1);
+
+            if (($date->dayOfWeekIso != 6) && ($date->dayOfWeekIso !== 7)){
+                
+                $i++;
+                dump($date->format('d-m-Y'));
+                // dump($date->dayOfWeekIso);
+            }
+            
+            
+        }
+        //$date = $date->format('d-m-Y');
+        dd();
+        dd($date);
 
         $ddate = "2021-06-27";
         $duedt = explode("-", $ddate);

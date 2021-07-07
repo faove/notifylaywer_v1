@@ -51,7 +51,7 @@ class ProductsController extends Controller
             $date_start = Carbon::now();
             //$date_start = date_create_from_format('d/m/Y', $request->selectedDateStart);
 
-            $date_add = date_create_from_format('d/m/Y', $request->selectedDateStart);
+            //$date_add = date_create_from_format('d/m/Y', $request->selectedDateStart);
             //$date->getTimestamp();
             //dd($date->getTimestamp());
             // $time = DateTime::createFromFormat('m-d-Y', '10-16-2003')->format('Y-m-d');
@@ -127,22 +127,48 @@ class ProductsController extends Controller
                     // // dd($fechaf);
 
                     // //$product->date_service = date('Y-m-d H:i:s',$fechaf); //strtotime($date)
+                    dump('date start');
+                    dump($date_start->format('d-m-Y'));
                     $product->date_start = $date_start;
-                    strtoupper($date_start->isoFormat('dd'));
-                    dump('date_start',$date_start);
+                    //strtoupper($date_start->isoFormat('dd'));
+                    //dump('date_start',$date_start);
+                    dump('Sumar>>>',$tp->deadlines);
+
+                    $i=0;
+
+                    while ($i < $tp->deadlines) {
+                        dump('entro');
+                        $date_start = $date_start->addDay(1);
+
+                        if (($date_start->dayOfWeekIso != 6) && ($date_start->dayOfWeekIso !== 7)){
+                            
+                            $i++;
+                            $date_end = $date_start;
+                            
+
+                        }
+                        
+                        
+
+                    }
+                    dump('date start++');
+                    dump($date_start->format('d-m-Y'));
+                    dump('date end');
+                    dump($date_end->format('d-m-Y'));
+                    $product->date_end = isset($date_end) ? $date_end :null;
                     // $product->date_end = date('d/m/Y', strtotime($date.'+1 day'));new DateTime("+1 day $date")
                     //$date = new DateTime($date);
-                    $date_end=$date_add->modify('+'.$tp->deadlines.' day');
-                    dump('date_add',$date_add);
+                    //$date_end=$date_add->modify('+'.$tp->deadlines.' day');
+                    //dump('date_add',$date_add);
                     //$Date2 = $date->format('d/m/Y');
-                    $product->date_end = $date_end;
-                    dump('date_end',$date_end);
+                    // $product->date_end = $date_end;
+                    //dump('date_end',$date_end);
                     // // $product->name_service = $request->input('name_service');
                     // $product->status = $request->input('status');
                     // // $product->rate_fixed = $request->input('rate_fixed');
                     $product->save();
 
-                    $date_start = $date_add;
+                    // $date_start = $date_add;
                     //$date_add=$date_add;
                     
                 }

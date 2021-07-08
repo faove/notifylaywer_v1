@@ -37,6 +37,8 @@ class DatabaseSeeder extends Seeder
         $this->call(TypeProductsSeeder::class);
         //Motivo de la comunicación
         $this->call(ReasonSeeder::class);
+        //Dias libres
+        $this->call(HolidaysTableSeeder::class);
         //Datos de Usuarios
         $this->call(UserSeeder::class); //table users
     }

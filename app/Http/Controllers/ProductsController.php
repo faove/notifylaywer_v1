@@ -213,10 +213,11 @@ class ProductsController extends Controller
                     $date_add =$date_start;
                     
                     // //$product->date_service = date('Y-m-d H:i:s',$fechaf); //strtotime($date)
-                    dump('date start',$date_start->format('d-m-Y'),$date_add);
+                    dump('date start',$date_start->format('d-m-Y'));
+                    dump('date add',$date_add->format('d-m-Y'));
                     // dump($date_start->format('d-m-Y'));
                     $product->date_start = $date_add;
-                   // $product->save(); 
+                    $product->save(); 
                    // unset($date_start);
                     // $date_add = $date_start;
                     // dd($date_add);
@@ -228,16 +229,16 @@ class ProductsController extends Controller
                     $i=0;
 
                     while ($i < $tp->deadlines) {
-                        
+                       
                         $date_addsum = $date_start->addDay(1);
-                        
+                        dump('$date_addsum',$date_addsum->format('d-m-Y'));
                         if (($date_addsum->dayOfWeekIso != 6) && ($date_addsum->dayOfWeekIso !== 7)){
                             //dump($date_addsum->format('Y-m-d'));
                             // dump('=',$daysFree);
                            // 
                             if (!in_array($date_addsum->format('Y-m-d'), $daysFree)){
                                 $i++;
-                                 $date_end = $date_addsum->format('Y-m-d 23:59:00');
+                                $date_end = $date_addsum->format('Y-m-d 23:59:00');
                                 //  dump('date_addsum',$date_addsum->format('Y-m-d 23:59:00'));
                             }
                             
@@ -263,12 +264,15 @@ class ProductsController extends Controller
                     // // $product->rate_fixed = $request->input('rate_fixed');
                     $product->save();
                     
-                    $date_start = $date_add;
+                    $date_start = $date_addsum->addDay(1);
+                    //dd('$date_start',$date_start);
+                    //$date_start = $date_end->format('Y-m-d 23:59:00');
                     //$date_add=$date_add;
-                    dump($i, $date_add);
+                    dump('$i',$i);
+                    dump('$date_end',$date_end);
                     
                 }
-                dd('date_start',$date_start,$date_end);
+               // dd('date_start',$date_start,$date_end);
                 return json_encode($product);
             }    
         } catch (Exception $e) {

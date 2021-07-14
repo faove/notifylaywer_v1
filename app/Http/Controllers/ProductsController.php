@@ -119,57 +119,8 @@ class ProductsController extends Controller
         try {
             $daysFree = array();
             $areafindid = $request->areas_id;
-            //dd($areafindid);
-            // $v = $request->selectedDateStart;
-            // dd($v);
 
             $date_start = Carbon::now();
-            //$date_start = date_create_from_format('d/m/Y', $request->selectedDateStart);
-
-            //$date_add = date_create_from_format('d/m/Y', $request->selectedDateStart);
-            //$date->getTimestamp();
-            //dd($date->getTimestamp());
-            // $time = DateTime::createFromFormat('m-d-Y', '10-16-2003')->format('Y-m-d');
-            // $dateDE = "16/10/2013";
-            // $time = \DateTime::createFromFormat("d.m.Y", $v);
-            //$d = new DateTime($v);
-            //$date = new DateTime(strtotime($v));
-            //dump($date->format('Y-m-d H:i:s'));
-            // dd('stop');
-
-           
-           
-            //dd($d);
-            // $selectedDateStart= Carbon::createFromFormat('d-m-Y H:i:s',  $selectedDateStart);
-            // $carbon = new Carbon($selectedDateStart);
-            //dd($date);
-
-            //
-            //printf("Right now is %s", Carbon::now()->toDateTimeString());
-            //printf("Right now in Vancouver is %s", Carbon::now('Europa/Madrid')); // automatically converted to string
-            // $tomorrow = Carbon::now()->addDay();
-            // $lastWeek = Carbon::now()->subWeek();
-            // $cDate = Carbon::create($selectedDateStart);
-            // dd($cDate);
-            // 
-            // dump(date("m",$selectedDateStart));
-            // dump(date("d",$selectedDateStart));
-            //dump(Carbon::create($request->selectedDateStart)->addDays(15)->toDateTimeString());
-            // dump($tomorrow->date_format('Y/m/d'));
-            // Carbon embed 822 languages:
-            //echo $tomorrow->locale('es')->isoFormat('dddd, MMMM Do YYYY, h:mm');
-            //dump(' ');
-            //echo $tomorrow->locale('ar')->isoFormat('dddd, MMMM Do YYYY, h:mm');
-            //dump(' ');
-
-            //dd('stoip');
-
-            
-            //echo strtotime("now"), "\n";
-            //dump($areafindid);
-            //dump(date("Y-m-d",$selectedDateStart));
-//            $fecha_venci = date("Y-m-d", strtotime("$selectedDateStart + 10 days"));
-            //dd($fecha_venci);
 
             if (isset($areafindid) && !empty($areafindid)){
 
@@ -179,16 +130,7 @@ class ProductsController extends Controller
                 $days_holidays = Holiday::all();
                 foreach($days_holidays as $key=>$values){
                     $daysFree[] = $values['date'];
-                    // dump($key,$values['date']);
                 }
-                // dump($days_holidays);
-                    
-                
-                // dd('stop',$daysFree);
-
-                //return json_encode($type_product);
-                //services_id, type_product_id, lexido, description_product, date_start, date_end, status    
-                //Para cada type Product add in Products
                 
                 foreach ($type_product as $tp) {    
 
@@ -199,83 +141,38 @@ class ProductsController extends Controller
                     $product->services_id = $request->input('services_id');
                     $product->type_product_id = $request->input('type_product_id');
                     $product->description_products = $tp->name;
-                    // $product->lexido = $request->input('lexido');
-                    // // $product->associate_id = $request->input('product_id');
-
-                    // $fechas = $request->input('date_start');
-                    // $fechae = $request->input('date_end');
-                    // // $fechaf = DateTime::createFromFormat('Y-m-d H:i:s', $fecha);
-                    // $fechast = date('Y-m-d H:i:s',strtotime($fechas));
-                    // $fechaen = date('Y-m-d H:i:s',strtotime($fechae));
-                    // // $fechaf = date('Y-m-d H:i:s',$fecha);
-                    // // dump('store');
-                    // // dd($fechaf);
-                    $date_add =$date_start;
                     
-                    // //$product->date_service = date('Y-m-d H:i:s',$fechaf); //strtotime($date)
-                    dump('date start',$date_start->format('d-m-Y'));
-                    dump('date add',$date_add->format('Y-m-d 00:00:00'));
-                    // dump($date_start->format('d-m-Y'));
+                    while (($date_start->dayOfWeekIso == 6) || ($date_start->dayOfWeekIso == 7)){
+                        $date_start->addDay(1);
+                    }
+                    $date_add =$date_start->format('Y-m-d 00:00:00');
                     $product->date_start = $date_add;
+                            $date_addsum = $date_start;
                     $product->save(); 
-                   // unset($date_start);
-                    // $date_add = $date_start;
-                    // dd($date_add);
-
-                    //strtoupper($date_start->isoFormat('dd'));
-                    //dump('date_start',$date_start);
-                    //dump('Sumar>>>',$tp->deadlines);
 
                     $i=0;
 
                     while ($i < $tp->deadlines) {
-                       
-                        $date_addsum = $date_start->addHours(23:59:00);
-                        dump('$date_addsum',$date_addsum->format('d-m-Y'));
+                        
                         if (($date_addsum->dayOfWeekIso != 6) && ($date_addsum->dayOfWeekIso !== 7)){
-                            //dump($date_addsum->format('Y-m-d'));
-                            // dump('=',$daysFree);
-                           // 
                             if (!in_array($date_addsum->format('Y-m-d'), $daysFree)){
-                                //if ($i==0) $product->date_start = $date_addsum->format('Y-m-d 00:00:00');;
                                 
                                 $i++;
-                                dump('$i',$i);
                                 $date_end = $date_addsum->format('Y-m-d 23:59:00');
-                                //  dump('date_addsum',$date_addsum->format('Y-m-d 23:59:00'));
                             }
                             
                         }
+                        $date_addsum = $date_start->addDay(1);
                     }
                     
-                   // dd($date_start->format('d-m-Y'));
-                    // dump('date start++');
-                    // dump($date_start->format('d-m-Y'));
-                   // dump('date end');
-                   // dump($date_end->format('d-m-Y'));
                     $product->date_end = isset($date_end) ? $date_end :null;
                    
-                    // $product->date_end = date('d/m/Y', strtotime($date.'+1 day'));new DateTime("+1 day $date")
-                    //$date = new DateTime($date);
-                    //$date_end=$date_add->modify('+'.$tp->deadlines.' day');
-                    //dump('date_add',$date_add);
-                    //$Date2 = $date->format('d/m/Y');
-                    // $product->date_end = $date_end;
-                    //dump('date_end',$date_end);
-                    // // $product->name_service = $request->input('name_service');
-                    // $product->status = $request->input('status');
-                    // // $product->rate_fixed = $request->input('rate_fixed');
                     $product->save();
                     
-                    $date_start = $date_addsum->addHours(23:59:00);
-                    //dd('$date_start',$date_start);
-                    //$date_start = $date_end->format('Y-m-d 23:59:00');
-                    //$date_add=$date_add;
+                    $date_start = $date_addsum;
                     
-                    //dd('$date_end',$date_end);
                     
                 }
-               // dd('date_start',$date_start,$date_end);
                 return json_encode($product);
             }    
         } catch (Exception $e) {

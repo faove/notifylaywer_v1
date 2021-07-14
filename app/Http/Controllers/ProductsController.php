@@ -193,7 +193,7 @@ class ProductsController extends Controller
                 foreach ($type_product as $tp) {    
 
                     if (isset($tp->deadlines)){
-                        //dump($tp->deadlines);
+                        //dd($tp->deadlines);
                     }
                     $product = new Products();
                     $product->services_id = $request->input('services_id');
@@ -214,7 +214,7 @@ class ProductsController extends Controller
                     
                     // //$product->date_service = date('Y-m-d H:i:s',$fechaf); //strtotime($date)
                     dump('date start',$date_start->format('d-m-Y'));
-                    dump('date add',$date_add->format('d-m-Y'));
+                    dump('date add',$date_add->format('Y-m-d 00:00:00'));
                     // dump($date_start->format('d-m-Y'));
                     $product->date_start = $date_add;
                     $product->save(); 
@@ -230,14 +230,17 @@ class ProductsController extends Controller
 
                     while ($i < $tp->deadlines) {
                        
-                        $date_addsum = $date_start->addDay(1);
+                        $date_addsum = $date_start->addHours(23:59:00);
                         dump('$date_addsum',$date_addsum->format('d-m-Y'));
                         if (($date_addsum->dayOfWeekIso != 6) && ($date_addsum->dayOfWeekIso !== 7)){
                             //dump($date_addsum->format('Y-m-d'));
                             // dump('=',$daysFree);
                            // 
                             if (!in_array($date_addsum->format('Y-m-d'), $daysFree)){
+                                //if ($i==0) $product->date_start = $date_addsum->format('Y-m-d 00:00:00');;
+                                
                                 $i++;
+                                dump('$i',$i);
                                 $date_end = $date_addsum->format('Y-m-d 23:59:00');
                                 //  dump('date_addsum',$date_addsum->format('Y-m-d 23:59:00'));
                             }
@@ -264,12 +267,12 @@ class ProductsController extends Controller
                     // // $product->rate_fixed = $request->input('rate_fixed');
                     $product->save();
                     
-                    $date_start = $date_addsum->addDay(1);
+                    $date_start = $date_addsum->addHours(23:59:00);
                     //dd('$date_start',$date_start);
                     //$date_start = $date_end->format('Y-m-d 23:59:00');
                     //$date_add=$date_add;
-                    dump('$i',$i);
-                    dump('$date_end',$date_end);
+                    
+                    //dd('$date_end',$date_end);
                     
                 }
                // dd('date_start',$date_start,$date_end);

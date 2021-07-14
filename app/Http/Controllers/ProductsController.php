@@ -128,6 +128,7 @@ class ProductsController extends Controller
                     ->get();
 
                 $days_holidays = Holiday::all();
+                //Creamos un array de los dias libres
                 foreach($days_holidays as $key=>$values){
                     $daysFree[] = $values['date'];
                 }
@@ -141,27 +142,31 @@ class ProductsController extends Controller
                     $product->services_id = $request->input('services_id');
                     $product->type_product_id = $request->input('type_product_id');
                     $product->description_products = $tp->name;
-                    
+                    //Si es sabado o Domingo increment
                     while (($date_start->dayOfWeekIso == 6) || ($date_start->dayOfWeekIso == 7)){
                         $date_start->addDay(1);
                     }
+                    //Formatemos el primer day en 00:00:00
                     $date_add =$date_start->format('Y-m-d 00:00:00');
                     $product->date_start = $date_add;
-                            $date_addsum = $date_start;
+                    $date_addsum = $date_start;
                     $product->save(); 
-
                     $i=0;
-
+                    //Asignamos las fechas posibles, depende de los dias para
+                    //cada TypeProductos
                     while ($i < $tp->deadlines) {
-                        
+                        //Si es sabado y domingo no guardamos ese day
                         if (($date_addsum->dayOfWeekIso != 6) && ($date_addsum->dayOfWeekIso !== 7)){
+                            //Preguntamos dias libres de pais
                             if (!in_array($date_addsum->format('Y-m-d'), $daysFree)){
-                                
+                                //Incrementa i     
                                 $i++;
+                                //Formatemos la fecha final
                                 $date_end = $date_addsum->format('Y-m-d 23:59:00');
                             }
                             
                         }
+                        //Incrementamos el un day
                         $date_addsum = $date_start->addDay(1);
                     }
                     

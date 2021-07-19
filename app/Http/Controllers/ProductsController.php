@@ -122,7 +122,11 @@ class ProductsController extends Controller
             $daysFree = array();
             $result_product = array();
             $areafindid = $request->areas_id;
-           
+            // services_id, area_id, category_id, selected_date_start, type_product_id, 
+            // lexido, description_product,date_start,status
+            // dispatch(addProduct(props.servi_id, props.areas_id, props.category_id, 
+            // selectedDateStart, tipoproduct, lexico, description_product, 
+            // format(toDate(selectedDateStart), 'yyyy/MM/dd'), status));  
             $date_start = Carbon::now();
 
             if (isset($areafindid) && !empty($areafindid)){

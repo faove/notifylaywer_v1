@@ -29,6 +29,7 @@ Route::middleware('auth:api')->get('/user', 'UserController@AuthRouteAPI');
 
 Route::group(['middleware' => ['cors','api']], function () {
     //Rutas a las que se permitirá acceso
+    //Route::post('products/add/{areas_id}',[ProductsController::class, 'createProducts']);
     // Route::get('/api/services', [ServicesController::class, 'index']);
     Route::get('gets/{userid}', [UserController::class, 'index']);
     Route::get('clients/{clientid}', [ClientController::class, 'index']);
@@ -42,7 +43,7 @@ Route::group(['middleware' => ['cors','api']], function () {
     Route::get('typestatus',[TypeStatusController::class, 'index']);
     Route::get('typeproducts/areas/{areasid}',[TypeProductsController::class, 'getTypeProducts']);
 
-    Route::post('products/add/{areas_id}', [ProductsController::class, 'createProducts']);
+    //Route::get('products/add/{areas_id}', [ProductsController::class, 'createProducts']);
 
     // Route::get('api/category',[CategoriesController::class, 'index']);
 });
@@ -64,5 +65,6 @@ Route::resource('categories','CategoriesController');
 Route::resource('clients','ClientController');
 Route::resource('associates','AssociatesController');
 Route::resource('areas','AreasController');
+
 Route::resource('products','ProductsController');
 Route::resource('typestatus','TypeStatusController');

@@ -17,12 +17,16 @@ class ProductsController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        echo 'index';
+        if (isset($request->productid)){
+            $product = Products::where('services_id','=',$request->productid)->get();   
+        }
+        return json_encode($product);
+
     }
 
     /**

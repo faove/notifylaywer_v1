@@ -22,6 +22,8 @@ class SendProduct extends Mailable
         //
         $this->subject = 'Advertencia. ' . $subject;
         $this->body = $body;
+
+        dump($this->subject);
     }
 
     /**
@@ -35,7 +37,7 @@ class SendProduct extends Mailable
             ->With(['line' => $this->body])
             ->from(config('mail.from.address'), config('mail.from.name'))
             ->subject($this->subject);
-
+        dump($mail);
         return $mail;
     }
 }

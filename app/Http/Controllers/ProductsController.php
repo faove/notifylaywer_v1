@@ -2,15 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+use App\Holiday;
 use App\Products;
 use App\TypeProducts;
-use App\Holiday;
-use Exception;
 
 use Date;
 use DateTime;
+use Exception;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class ProductsController extends Controller
 {
@@ -139,14 +141,16 @@ class ProductsController extends Controller
                     
                 }
                 //dd('$product',$product);
-            // field: 'lexido', 
-            // field: 'name', 
-            // field: 'date_start', 
-            // field: 'date_end', 
-            Mail::to(User::find(1)->email)->later(5,
-                new SentProduct([], "{$this->description}",
-                    "El proceso {$this->description} se bloquea: {$e->getMessage()} . ':: Linea' . {$e->getLine()}"));
-                return json_encode($result_product);
+                // field: 'lexido', 
+                // field: 'name', 
+                // field: 'date_start', 
+                // field: 'date_end', 
+                Mail::to(User::find(1)->email)->later(5,
+                    new SentProduct([], "{$this->description}",
+                        "El proceso {$this->description} se bloquea: {$e->getMessage()} . ':: Linea' . {$e->getLine()}"));
+                
+                    return json_encode($result_product);
+
             }    
         } catch (Exception $e) {
             // Mail::to(User::find(1)->email)->later(5,

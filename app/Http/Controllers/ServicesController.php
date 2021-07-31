@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DateTime;
 use App\Services;
+use Carbon\Carbon;
 use App\Associates;
 use Illuminate\Http\Request;
 
@@ -136,28 +137,16 @@ class ServicesController extends Controller
      */
     public function store(Request $request)
     {
-        // dump('store');
-        //     type_services_id, mode_services_id, areas_id, associate_id,
-        // client_id, product_id,name_service, gross_amount, rate_variable, date_service
+        
         $service = new Services();
         $service->category_id = $request->input('category_id');
         $service->areas_id = $request->input('areas_id');
         $service->associate_id = $request->input('associate_id');
         $service->client_id = $request->input('client_id');
-        // $service->associate_id = $request->input('product_id');
-
         $fecha = $request->input('date_service');
-        // $fechaf = DateTime::createFromFormat('Y-m-d H:i:s', $fecha);
-        $fechaf = date('Y-m-d H:i:s',strtotime($fecha));
-        // $fechaf = date('Y-m-d H:i:s',$fecha);
-        // dump('store');
-        // dd($fechaf);
-
-        //$service->date_service = date('Y-m-d H:i:s',$fechaf); //strtotime($date)
-        $service->date_service = $fechaf;
-        // $service->name_service = $request->input('name_service');
+        $fechaf = Carbon::parse($fecha);
+        $service->date_service = $fechaf->format('Y-m-d');
         $service->gross_amount = $request->input('gross_amount');
-        // $service->rate_fixed = $request->input('rate_fixed');
         $service->save();
         return json_encode($service);
     }

@@ -27,6 +27,7 @@ class ProductsController extends Controller
         if (isset($request->productid)){
             $product = Products::where('services_id','=',$request->productid)->get();   
         }
+        //dump($product);
         return json_encode($product);
 
     }
@@ -121,8 +122,10 @@ class ProductsController extends Controller
                     $products->type_product_id = $tp->id;
                     // $products->type_product_id = $request->input('type_product_id');
                     $products->description_products = $tp->name;
-                    $products->date_start = isset($date_add) ? $date_add :null;
-                    $products-> date_end = isset($date_end) ? $date_end :null;
+                    $products->date_start_preview = isset($date_add) ? $date_add :null;
+                    $products->date_end_preview = isset($date_end) ? $date_end :null;
+                    $products->date_start_real= isset($date_add) ? $date_add :null;
+                    $products-> date_end_real = isset($date_end) ? $date_end :null;
                     $products->save();
                     // $products = Products::firstOrCreate([
                     //     'services_id' => $request->input('services_id'),
@@ -298,8 +301,12 @@ class ProductsController extends Controller
                     $products->type_product_id = $tp->id;
                     // $products->type_product_id = $request->input('type_product_id');
                     $products->description_products = $tp->name;
-                    $products->date_start = isset($date_add) ? $date_add :null;
-                    $products-> date_end = isset($date_end) ? $date_end :null;
+
+                    $products->date_start_preview = isset($date_add) ? $date_add :null;
+                    $products-> date_end_preview = isset($date_end) ? $date_end :null;
+                    $products->date_start_real = isset($date_add) ? $date_add :null;
+                    $products-> date_end_real = isset($date_end) ? $date_end :null;
+
                     $products->save();
                     // $products = Products::firstOrCreate([
                     //     'services_id' => $request->input('services_id'),

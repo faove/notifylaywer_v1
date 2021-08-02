@@ -19,8 +19,10 @@ class CreateProductsTable extends Migration
             $table->integer('type_product_id')->nullable()->unsigned();
             $table->string('lexido')->nullable(); //LEXICODE
             $table->text('description_products')->nullable(); // Descripcion del Entregables
-            $table->dateTime('date_start')->nullable(); //FECHAS DEL SERVICIO
-            $table->dateTime('date_end')->nullable(); //FECHAS DEL SERVICIO
+            $table->dateTime('date_start_preview')->nullable(); //FECHAS DEL SERVICIO PREVISTA
+            $table->dateTime('date_end_preview')->nullable(); //FECHAS DEL SERVICIO PREVISTA
+            $table->dateTime('date_start_real')->nullable(); //FECHAS DEL SERVICIO REAL
+            $table->dateTime('date_end_real')->nullable(); //FECHAS DEL SERVICIO REAL
             $table->dateTime('date_pay')->nullable();  // FECHA PAGO
             $table->integer('quota')->nullable(); // Cuota en porcentaje
             $table->decimal('amount', 16, 2)->nullable();
@@ -31,7 +33,6 @@ class CreateProductsTable extends Migration
             $table->string('status')->default(0)->index(); //1=entregado / 0=no entregado
             $table->timestamps();
             $table->softDeletes();
-            
             $table->foreign('services_id')->references('id')->on('services');
         });
     }

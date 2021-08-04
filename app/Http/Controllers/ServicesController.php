@@ -144,8 +144,9 @@ class ServicesController extends Controller
         $service->associate_id = $request->input('associate_id');
         $service->client_id = $request->input('client_id');
         $fecha = $request->input('date_service');
-        $fechaf = Carbon::parse($fecha);
-        $service->date_service = $fechaf->format('Y-m-d');
+        $fechaf = Carbon::parse($fecha)->format('Y-m-d H:m:s');
+        //$fechaf = Carbon::parse($fecha,'UTC');
+        $service->date_service = $fechaf;
         $service->gross_amount = $request->input('gross_amount');
         $service->save();
         return json_encode($service);

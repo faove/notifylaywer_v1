@@ -148,9 +148,9 @@ class ProductsController extends Controller
                 // field: 'name', 
                 // field: 'date_start', 
                 // field: 'date_end', 
-                Mail::to(User::find(1)->email)->later(5,
-                    new SentProduct([], "{$this->description}",
-                        "El proceso {$this->description} se bloquea: {$e->getMessage()} . ':: Linea' . {$e->getLine()}"));
+                // Mail::to(User::find(1)->email)->later(5,
+                //     new SentProduct([], "{$this->description}",
+                //         "El proceso {$this->description} se bloquea: {$e->getMessage()} . ':: Linea' . {$e->getLine()}"));
                 
                     return json_encode($result_product);
 

@@ -16,7 +16,7 @@ class AssociatesController extends Controller
     {
         $result = null;
         $associatefindid = $request->associateid;
-        
+
         if (isset($associatefindid) && !empty($associatefindid)){
 
             $result = Associates::find($associatefindid);
@@ -25,14 +25,14 @@ class AssociatesController extends Controller
 
             $offset = $request->offset;
             $limit  = $request->limit;
-            
+
             if ((isset($offset) && isset($limit)) && !empty($limit)){
                 $result = Associates::offset($offset)->limit($limit)->get();
 
             }else {
                 $result = Associates::all();
             }
-            
+
         }
 
         return json_encode($result);
@@ -99,7 +99,7 @@ class AssociatesController extends Controller
      */
     public function update(Request $request, $associateid)
     {
-        
+
 
         $associate = Associates::find($associateid);
         $associate->name = $request->input('name');

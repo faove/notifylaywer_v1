@@ -16,7 +16,7 @@ class AreasController extends Controller
     {
         $result = null;
         $areafindid = $request->areaid;
-        
+
         if (isset($areafindid) && !empty($areafindid)){
 
             $result = Areas::find($areafindid);
@@ -25,14 +25,14 @@ class AreasController extends Controller
 
             $offset = $request->offset;
             $limit  = $request->limit;
-            
+
             if ((isset($offset) && isset($limit)) && !empty($limit)){
                 $result = Areas::offset($offset)->limit($limit)->get();
 
             }else {
                 $result = Areas::all();
             }
-            
+
         }
 
         return json_encode($result);
@@ -86,7 +86,7 @@ class AreasController extends Controller
      */
     public function update(Request $request, $areaid)
     {
-        
+
         $area = Areas::find($areaid);
         $area->category_id = $request->input('category_id');
         $area->name = $request->input('name');
@@ -113,14 +113,14 @@ class AreasController extends Controller
      * @param  \App\Areas $areaid
      * @return \Illuminate\Http\Response
      */
-    public function getCategArea(Request $request)
+    public function getCategArea(Request $request, $areaid)
     {
         $result = null;
-       
+
         // dump($request->areaid);
         // dump('getCategArea');
         $areafindid = $request->areaid;
-        
+
         if (isset($areafindid) && !empty($areafindid)){
 
             $result = Areas::select('areas.id','areas.category_id','areas.name',

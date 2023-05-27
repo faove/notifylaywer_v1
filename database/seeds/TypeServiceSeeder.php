@@ -18,7 +18,7 @@ class TypeServiceSeeder extends Seeder
             0 => 
             array (
                 'id' => 1,
-                'name' => 'Advisory', //Asesoría
+                'name' => 'Asesoría', //Asesoría Advisory
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,
@@ -26,7 +26,7 @@ class TypeServiceSeeder extends Seeder
             1 => 
             array (
                 'id' => 2,
-                'name' => 'Consultancy', //Consultoría
+                'name' => 'Consultoría', //Consultoría Consultancy
                 'is_active' => 1,
                 'created_at' => NULL,
                 'updated_at' => NULL,

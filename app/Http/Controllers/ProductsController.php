@@ -22,7 +22,7 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function index(Request $request)
+    public function index(Request $request, $productid)
     {
         if (isset($request->productid)){
             $product = Products::where('services_id','=',$request->productid)->get();
@@ -48,7 +48,7 @@ class ProductsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $areas_id)
     {
         try {
             $daysFree = array();
